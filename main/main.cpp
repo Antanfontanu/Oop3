@@ -66,6 +66,7 @@ int main(){
                 case 5: failoKelias = "studentas1000000.txt"; break;
                 case 6: failoKelias = "studentas10000000.txt"; break;
             }
+
             
             if (!std::filesystem::exists(failoKelias)) {
                 cout << "Failo \"" << failoKelias << "\" nėra! "
@@ -95,6 +96,14 @@ int main(){
             cout << "2 -  Mediana" << endl;
             cout << "3 - Abu" << endl;
             int metodas = ivestiSk("Pasirinkimas: ", 1,3);
+
+            cout << "Pasirinkite rikiavimo kriterijų:" << endl;
+            cout << "1 - Pagal vardą" << endl;
+            cout << "2 - Pagal pavardę" << endl;
+            cout << "3 - Pagal galutinį pažymį" << endl;
+            int kriterijus = ivestiSk("Pasirinkimas: ", 1,3);
+
+            surikiuotiStudentus(Grupe, kriterijus, Metodas(metodas));
             spausdintiLentele(Grupe, Metodas(metodas));
         }
         else if (pasirinkimas == 4) {
@@ -137,8 +146,34 @@ int main(){
             cout << "2 - Mediana" << endl;
             cout << "3 - Abu" << endl;
             int metodas = ivestiSk("Pasirinkimas: ", 1, 3);
+            
+            vector<Studentas> vargsiukai;
+            vector<Studentas> kietiakai;
 
-            padalintiStudentus(Grupe, Metodas(metodas));
+    
+            
+
+
+            padalintiStudentus(Grupe, vargsiukai, kietiakai, Metodas(metodas));
+            cout << "Pasirinkite rikiavimo kriterijų:" << endl;
+            cout << "1 - Pagal vardą" << endl;
+            cout << "2 - Pagal pavardę" << endl;
+            cout << "3 - Pagal galutinį pažymį" << endl;
+            int kriterijus = ivestiSk("Pasirinkimas: ", 1,3);
+
+         
+
+    
+            surikiuotiStudentus(vargsiukai, kriterijus, Metodas(metodas));
+            surikiuotiStudentus(kietiakai, kriterijus, Metodas(metodas));
+
+    
+            irasytiStudentusIFaila(vargsiukai, Metodas(metodas), "vargsiukai.txt");
+            irasytiStudentusIFaila(kietiakai, Metodas(metodas), "kietiakai.txt");
+
+            cout << "Failai „vargsiukai.txt“ ir „kietiakai.txt“ sėkmingai sukurti!" << endl;
+
+            
         }
         else if(pasirinkimas==7){ cout<<"Programa baigta"<<endl; break; }
     }

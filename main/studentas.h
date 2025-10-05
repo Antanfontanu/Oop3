@@ -17,10 +17,10 @@ struct Studentas{
     double galMed;
 };
 
-struct Grupe{
-    std::vector<Studentas> studentai;
-    std::string pavadinimas;
-};
+//struct Grupe{
+//    std::vector<Studentas> studentai;
+//    std::string pavadinimas;
+//};
 
 enum class Metodas{
     Vidurkis = 1,

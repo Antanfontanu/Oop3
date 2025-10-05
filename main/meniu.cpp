@@ -42,31 +42,48 @@ void spausdintiLentele(const vector<Studentas>& Grupe, Metodas metodas,std::ostr
     }
 }
 
-void padalintiStudentus(const vector<Studentas>& Grupe, Metodas metodas){
+void padalintiStudentus(const vector<Studentas>& Grupe, 
+                        vector<Studentas>& vargsiukai, 
+                        vector<Studentas>& kietiakai, 
+                        Metodas metodas) 
+{
     auto start_split = high_resolution_clock::now();
 
-    vector<Studentas> vargsiukai;
-    vector<Studentas> kietiakai;
-    
-
-    for (const auto& s : Grupe){
+    for (const auto& s : Grupe) {
         double galutinis;
-        if(metodas==Metodas::Vidurkis) galutinis = s.galVid;
-        else if(metodas==Metodas::Mediana) galutinis = s.galMed;
-        else galutinis = (s.galVid + s.galMed)/2.0;
+        if (metodas == Metodas::Vidurkis) galutinis = s.galVid;
+        else if (metodas == Metodas::Mediana) galutinis = s.galMed;
+        else galutinis = (s.galVid + s.galMed) / 2.0;
 
-        if(galutinis<5.0) vargsiukai.push_back(s);
+        if (galutinis < 5.0) vargsiukai.push_back(s);
         else kietiakai.push_back(s);
     }
-    auto end_split = high_resolution_clock::now();
-    cout << "Padalinimas į grupes užtruko: "
-         << duration_cast<milliseconds>(end_split - start_split).count()<< " ms" << endl;
-    
-    auto start_write = high_resolution_clock::now();
 
-    irasytiStudentusIFaila(vargsiukai, metodas, "vargsiukai.txt");
-    irasytiStudentusIFaila(kietiakai, metodas, "kietiakai.txt");
-    auto end_write = high_resolution_clock::now();
-    cout << "Įrašymas į failus užtruko: "
-         << duration_cast<milliseconds>(end_write - start_write).count()<< " ms" << endl;
+    auto end_split = high_resolution_clock::now();
+    cout << "Padalinimas į grupes užtruko: " 
+         << duration_cast<milliseconds>(end_split - start_split).count() 
+         << " ms" << endl;
 }
+
+void surikiuotiStudentus(vector<Studentas>& stud, int kriterijus, Metodas metodas) {
+    if (kriterijus == 1) {
+        sort(stud.begin(), stud.end(), [](const Studentas& a, const Studentas& b){
+            return a.var < b.var;
+        });
+    } else if (kriterijus == 2) {
+        sort(stud.begin(), stud.end(), [](const Studentas& a, const Studentas& b){
+            return a.pav < b.pav; 
+        });
+    } else if (kriterijus == 3) {
+        sort(stud.begin(), stud.end(), [metodas](const Studentas& a, const Studentas& b){
+            double galA = (metodas == Metodas::Vidurkis) ? a.galVid :
+                          (metodas == Metodas::Mediana) ? a.galMed :
+                          (a.galVid + a.galMed)/2.0;
+            double galB = (metodas == Metodas::Vidurkis) ? b.galVid :
+                          (metodas == Metodas::Mediana) ? b.galMed :
+                          (b.galVid + b.galMed)/2.0;
+            return galA > galB;
+        });
+    }
+}
+
