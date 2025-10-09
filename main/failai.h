@@ -3,7 +3,13 @@
 #include <vector>
 #include <string>
 
-std::vector<Studentas> nuskaitytiIsFailo(const std::string& failoVardas);
-void irasytiStudentusIFaila(const std::vector<Studentas>& stud, Metodas metodas, const std::string& failoVardas);
-void generuotiFailus();
+
 int atsitiktinisbalas(int min, int max);
+template <typename Container>
+Container nuskaitytiIsFailo(const std::string& failoVardas);
+
+template <typename Container>
+void irasytiStudentusIFaila(const Container& stud, Metodas metodas, const std::string& failoVardas);
+void generuotiFailus();
+
+

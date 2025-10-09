@@ -44,6 +44,7 @@ void generuotiFailus() {
         out << atsitiktinisbalas(1, 10) << endl;
     }
     out.close();
+
     auto end = high_resolution_clock::now();
     auto duration = duration_cast<milliseconds>(end - start).count();      
     
@@ -52,8 +53,10 @@ void generuotiFailus() {
     cout << "Failo generavimas užtruko: " << duration << " ms" << endl;
 }
 
-vector<Studentas> nuskaitytiIsFailo(const string& failoVardas) {
-    vector<Studentas> grupe;
+
+template <typename Container>
+Container nuskaitytiIsFailo(const string& failoVardas) {
+    Container grupe;
     ifstream failas(failoVardas);
     if (!failas) { cout << "Nepavyko atidaryti failo: " << failoVardas << endl; return grupe; }
 
@@ -97,8 +100,8 @@ vector<Studentas> nuskaitytiIsFailo(const string& failoVardas) {
     cout << "Sėkmingai nuskaityta " << grupe.size() << " studentų iš failo." << endl;
     return grupe;
 }
-
-void irasytiStudentusIFaila(const vector<Studentas>& stud, Metodas metodas, const string& failoVardas){
+template <typename Container>
+void irasytiStudentusIFaila(const Container& stud, Metodas metodas, const string& failoVardas){
     ofstream out(failoVardas);
     if(!out){ cout << "Nepavyko sukurti failo: " << failoVardas << endl; return; }
 
@@ -110,3 +113,7 @@ void irasytiStudentusIFaila(const vector<Studentas>& stud, Metodas metodas, cons
     }
     out.close();
 }
+template std::vector<Studentas> nuskaitytiIsFailo<std::vector<Studentas>>(const std::string&);
+template std::list<Studentas> nuskaitytiIsFailo<std::list<Studentas>>(const std::string&);
+template void irasytiStudentusIFaila<std::vector<Studentas>>(const std::vector<Studentas>&, Metodas, const std::string&);
+template void irasytiStudentusIFaila<std::list<Studentas>>(const std::list<Studentas>&, Metodas, const std::string&);

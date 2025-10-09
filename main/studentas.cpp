@@ -77,15 +77,16 @@ Studentas Stud_iv() {
     return Pirmas; 
 }
 
-double skaiciuotiMediana(vector<int> paz){
+double skaiciuotiMediana(const std::vector<int>& paz){
     int n = paz.size();
     if (n == 0) return 0;
 
-    sort(paz.begin(), paz.end()); 
+    std::vector<int> temp = paz; 
+    std::sort(temp.begin(), temp.end()); 
 
     if (n % 2 != 0) {
-        return paz[n / 2];
+        return temp[n / 2];
     } else {
-        return (paz[(n - 1) / 2] + paz[n / 2]) / 2.0;
+        return (temp[(n - 1) / 2] + temp[n / 2]) / 2.0;
     }
 }
