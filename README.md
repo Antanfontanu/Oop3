@@ -10,6 +10,10 @@ bei studentų skirstymas grupėmis pagal jų rezultatus. <br>
 ## Programos spartos analizė
 
 Laiko testavimas buvo atliktas su vektoriaus ir sąrašo konteineriais, naudoti tie patys sugeneruoti failai su 5 namų darbų pažymiais, laikui imtas 3 bandymų vidurkis
+### Testavimo sistemos parametrai
+CPU: AMD Ryzen 5 7535U with Radeon Graphics 2.90 GHz
+RAM: 16GB (13.7GB naudojami)<br>
+HDD: SSD 512GB (SKHynix HFS512GEJ4X112N) <br>
 ### Laiko matavimo metodas
 Buvo naudota naudota C++ biblioteka chrono
 ### Testuoti failai:
