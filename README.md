@@ -1,21 +1,15 @@
 # OOP
-v.02 - release
+v.03 - release
 ## Atnaujinimai
-v0.1 failai buvo suskirstyti į keturis .cpp ir keturis .h failus. <br> 
+Pridėtas pasirinkimas su kuriais vektoriais norime dirbti <br> 
 Taip pat pridėtas atsitiktinis failų generavimas. <br>
 bei studentų skirstymas grupėmis pagal jų rezultatus. <br>
 
-## Atnaujintas meniu
-1 - įvesti studentus <br>
-2 - Nuskaityti studentus iš failo <br>
-3 - Parodyti rezultatų lentelę <br>
-4 - Testavimas pagal failą <br>
-5 - Generuoti atsitiktinius studentų failus <br>
-6 - Padalinti studentus į grupes (vargšiukai/kietiakai) <br>
-7 - Baigti programą <br>
+
 
 ## Programos spartos analizė
 
+Laiko testavimas buvo atliktas su vektoriaus ir sąrašo konteineriais, naudoti tie patys sugeneruoti failai su 5 namų darbų pažymiais, laikui imtas 3 bandymų vidurkis
 ### Laiko matavimo metodas
 Buvo naudota naudota C++ biblioteka chrono
 ### Testuoti failai:
@@ -35,14 +29,25 @@ auto duration = duration_cast<milliseconds>(end - start).count();
 1 Failų kūrimas <br>
 2 Duomenų nuskaitymas iš failų <br>
 3 Studentų rūšiavimas į dvi grupes <br>
-4 Surūšiuotų studentų išvedimas į du naujus failus <br>
-
+4 Surūšiuotų studentų išvedimas į vargšiukai.txt <br>
+5 Surūšiuotų studentų išvedimas į kietiakai.txt <br>
 ### Rezultatų lentelė
+### Testavimas su vektoriaus konteineriu
 
-| Failas                 | Failo kūrimas | Duomenų nuskaitymas | Studentų rūšiavimas | Išvedimas į failus |
-|:------------------------|:--------------|:--------------------|:--------------------|:-------------------|
-| studentas1000.txt       | 5.4 s         | 0.008 s             | 0 s                 | 0.049 s            |
-| studentas10000.txt      | 4.9 s         | 0.057 s             | 0.003 s             | 0.133 s            |
-| studentas100000.txt     | 7.1 s         | 0.567 s             | 0.049 s             | 1.615 s            |
-| studentas1000000.txt    | 16.7 s        | 4.21 s              | 0.504 s             | 10.7 s             |
-| studentas10000000.txt   | 111.6 s       | 39.3 s              | 3.8 s               | 121.1 s            |
+| Failas                 | Failo kūrimas | Duomenų nuskaitymas | Studentų rūšiavimas | Išvedimas į kietiakai |Išvedimas į vargšiukai|
+|:------------------------|:--------------|:--------------------|:--------------------|:-------------------|:-------------------|
+| studentas1000.txt       | 5.4 s         | 0.008 s             | 0 s                 | 0.004 s            | 0.01 s             |
+| studentas10000.txt      | 4.9 s         | 0.048 s             | 0.003 s             | 0.048 s            | 0.044 s            |
+| studentas100000.txt     | 7.1 s         | 0.445 s             | 0.049 s             | 0.388 s            | 0.282 s            |
+| studentas1000000.txt    | 16.7 s        | 3.21 s              | 0.304 s             | 4.51 s             | 3.12 s             |
+| studentas10000000.txt   | 111.6 s       | 34.3 s              | 3.1 s               | 56.12 s            | 64.33 s            |
+
+### Testavimas su sąrašo konteineriu
+
+| Failas                 | Failo kūrimas | Duomenų nuskaitymas | Studentų rūšiavimas | Išvedimas į kietiakai |Išvedimas į vargšiukai|
+|:------------------------|:--------------|:--------------------|:--------------------|:-------------------|:-------------------|
+| studentas1000.txt       | 5.4 s         | 0.008 s             | 0 s                 | 0.04 s             | 0.049 s            |
+| studentas10000.txt      | 4.9 s         | 0.057 s             | 0.003 s             | 0.133 s            | 0.049 s            |
+| studentas100000.txt     | 7.1 s         | 0.567 s             | 0.049 s             | 1.615 s            | 0.049 s            |
+| studentas1000000.txt    | 16.7 s        | 4.21 s              | 0.504 s             | 10.7 s             | 0.049 s            |
+| studentas10000000.txt   | 111.6 s       | 39.3 s              | 3.8 s               | 121.1 s            | 0.049 s            |
