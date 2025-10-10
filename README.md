@@ -50,8 +50,28 @@ auto duration = duration_cast<milliseconds>(end - start).count();
 
 | Failas                 | Failo kūrimas | Duomenų nuskaitymas | Studentų rūšiavimas | Išvedimas į kietiakai |Išvedimas į vargšiukai|
 |:------------------------|:--------------|:--------------------|:--------------------|:-------------------|:-------------------|
-| studentas1000.txt       | 5.4s          | 0.005 s             | 034 s               | 0.011 s            | 0.007 s            |
+| studentas1000.txt       | 5.4s          | 0.005 s             | 0.00064s            | 0.011 s            | 0.007 s            |
 | studentas10000.txt      | 4.9 s         | 0.076 s             | 0.003 s             | 0.053 s            | 0.042 s            |
 | studentas100000.txt     | 7.1 s         | 0.383 s             | 0.036 s             | 0.378 s            | 0.431 s            |
 | studentas1000000.txt    | 16.7 s        | 3.35 s              | 0.319 s             | 4.69 s             | 3.369 s            |
 | studentas10000000.txt   | 111.6 s       | 33.3 s              | 3.5 s               | 52.13 s            | 38.62 s            |
+
+
+## Rezultatų diagramos
+
+### studentas1000.txt
+![studentas1000](diagramos/studentas1000.png)
+
+### studentas10000.txt
+![studentas10000](diagramos/studentas10000.png)
+
+### studentas100000.txt
+![studentas100000](diagramos/studentas100000.png)
+
+### studentas1000000.txt
+![studentas1000000](diagramos/studentas1000000.png)
+
+### studentas10000000.txt
+![studentas10000000](diagramos/studentas10000000.png)
+
+
