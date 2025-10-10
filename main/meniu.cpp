@@ -1,17 +1,10 @@
 #include "meniu.h"
-#include <iomanip>
-#include <iostream>
-#include <algorithm>
-#include <list>
-#include <vector>
-#include <chrono>
-
+#include "mylib.h"
+#include "timer.h"
 using namespace std;
 using namespace std::chrono;
 
-// =======================
-// Skaičiaus įvedimo funkcija
-// =======================
+
 int ivestiSk(const string &tekstas, int min_val, int max_val) {
     int sk;
     while (true) {
@@ -36,7 +29,8 @@ void padalintiStudentus(const Container &Grupe,
                         Container &vargsiukai,
                         Container &kietiakai,
                         Metodas metodas) {
-    auto start_split = high_resolution_clock::now();
+    Timer t("Padalinimas į grupes");
+    
 
     for (const auto &s : Grupe) {
         double galutinis;
@@ -53,10 +47,7 @@ void padalintiStudentus(const Container &Grupe,
             kietiakai.push_back(s);
     }
 
-    auto end_split = high_resolution_clock::now();
-    cout << "Padalinimas į grupes užtruko: "
-         << duration_cast<milliseconds>(end_split - start_split).count()
-         << " ms" << endl;
+     t.save();
 }
 
 

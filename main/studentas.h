@@ -1,12 +1,5 @@
 #pragma once
-#include <vector>
-#include <string>
-#include <list>
-#include <iostream>
-#include <ostream>
-#include <iomanip>  
-#include <algorithm>
-
+#include "mylib.h"
 
 struct Balas {
     std::vector<int> nd;

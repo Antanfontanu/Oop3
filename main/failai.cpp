@@ -1,11 +1,6 @@
 #include "failai.h"
-#include <iostream>
-#include <fstream>
-#include <sstream>
-#include <iomanip>
-#include <algorithm>
-#include <cstdlib>
-#include <chrono>
+#include "mylib.h"
+#include "timer.h"
 
 using namespace std;
 
@@ -14,8 +9,7 @@ int atsitiktinisbalas(int min, int max) {
 }
 
 void generuotiFailus() {
-    using namespace std::chrono;
-    auto start = high_resolution_clock::now();
+    Timer t("Failo generavimas");
     vector<int> dydziai = {1000, 10000, 100000, 1000000, 10000000};
     cout << "Pasirinkite studentų kiekį iš šių variantų:\n";
     for (size_t i = 0; i < dydziai.size(); i++) {
@@ -45,17 +39,17 @@ void generuotiFailus() {
     }
     out.close();
 
-    auto end = high_resolution_clock::now();
-    auto duration = duration_cast<milliseconds>(end - start).count();      
+    t.save();     
     
     cout << "Sukurtas failas: " << failoVardas 
          << " (" << dydis << " įrašų, ND=" << nd_kiekis << ")" << endl;
-    cout << "Failo generavimas užtruko: " << duration << " ms" << endl;
+    
 }
 
 
 template <typename Container>
 Container nuskaitytiIsFailo(const string& failoVardas) {
+    Timer t("Failo nuskaitymas");
     Container grupe;
     ifstream failas(failoVardas);
     if (!failas) { cout << "Nepavyko atidaryti failo: " << failoVardas << endl; return grupe; }
@@ -98,10 +92,12 @@ Container nuskaitytiIsFailo(const string& failoVardas) {
     }
 
     cout << "Sėkmingai nuskaityta " << grupe.size() << " studentų iš failo." << endl;
+    t.save();
     return grupe;
 }
 template <typename Container>
 void irasytiStudentusIFaila(const Container& stud, Metodas metodas, const string& failoVardas){
+    Timer t("Įrašymas į failus");
     ofstream out(failoVardas);
     if(!out){ cout << "Nepavyko sukurti failo: " << failoVardas << endl; return; }
 
@@ -112,6 +108,7 @@ void irasytiStudentusIFaila(const Container& stud, Metodas metodas, const string
         out << s.var << " " << s.pav << " " << fixed << setprecision(2) << galutinis << endl;
     }
     out.close();
+    t.save();
 }
 template std::vector<Studentas> nuskaitytiIsFailo<std::vector<Studentas>>(const std::string&);
 template std::list<Studentas> nuskaitytiIsFailo<std::list<Studentas>>(const std::string&);

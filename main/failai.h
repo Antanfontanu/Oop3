@@ -1,7 +1,6 @@
 #pragma once
 #include "studentas.h"
-#include <vector>
-#include <string>
+#include "mylib.h"
 
 
 int atsitiktinisbalas(int min, int max);

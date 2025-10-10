@@ -1,14 +1,9 @@
-#include <iostream>
-#include <vector>
-#include <list>
-#include <algorithm>
-#include <cstdlib>
-#include <chrono>
-#include <fstream>
-#include <filesystem>
+
+#include "mylib.h"
 #include "studentas.h"
 #include "failai.h"
 #include "meniu.h"
+#include "timer.h"
 
 using namespace std;
 using namespace std::chrono;
@@ -47,8 +42,9 @@ void paleistiPrograma(Container &Grupe) {
             cout << "3 - studentas10000.txt\n";
             cout << "4 - studentas100000.txt\n";
             cout << "5 - studentas1000000.txt\n";
+            cout << "6 - studentas10000000.txt\n";
 
-            int f = ivestiSk("Pasirinkimas: ", 1, 5);
+            int f = ivestiSk("Pasirinkimas: ", 1, 6);
             string failoKelias;
 
             switch (f) {
@@ -57,6 +53,7 @@ void paleistiPrograma(Container &Grupe) {
                 case 3: failoKelias = "studentas10000.txt"; break;
                 case 4: failoKelias = "studentas100000.txt"; break;
                 case 5: failoKelias = "studentas1000000.txt"; break;
+                case 6: failoKelias = "studentas10000000.txt"; break;
             }
 
             if (!filesystem::exists(failoKelias)) {
@@ -65,13 +62,10 @@ void paleistiPrograma(Container &Grupe) {
                 continue;
             }
 
-            auto start = high_resolution_clock::now();
+            
+
+            
             Container failoGrupe = nuskaitytiIsFailo<Container>(failoKelias);
-            auto end = high_resolution_clock::now();
-
-            cout << "Failo nuskaitymas užtruko: "
-                 << duration_cast<milliseconds>(end - start).count() << " ms" << endl;
-
             Grupe.insert(Grupe.end(), failoGrupe.begin(), failoGrupe.end());
             cout << "Nuskaityta " << failoGrupe.size() << " studentų." << endl;
         }
@@ -107,16 +101,16 @@ void paleistiPrograma(Container &Grupe) {
             else if (failoPasirinkimas == 2) failoKelias = "studentai100000.txt";
             else failoKelias = "studentai1000000.txt";
 
-            auto start = high_resolution_clock::now();
+            
             Container testGrupe = nuskaitytiIsFailo<Container>(failoKelias);
             if (testGrupe.empty()) { cout << "Failas tuščias arba jo nepavyko atidaryti." << endl; continue; }
             mSort(testGrupe, [](const Studentas &a, const Studentas &b){ return a.pav < b.pav; });
 
-            auto end = high_resolution_clock::now();
+            
 
             ofstream fout("testavimo_rezultatai.txt");
             if (!fout) { cout << "Nepavyko sukurti rezultatų failo!" << endl; continue; }
-            fout << "Nuskaitymo ir rikiavimo laikas: " << duration_cast<milliseconds>(end - start).count() << " ms\n";
+            
             fout << "Testavimo rezultatai:\n";
             spausdintiLentele(testGrupe, Metodas::Abu, fout);
             fout.close();
@@ -149,18 +143,13 @@ void paleistiPrograma(Container &Grupe) {
             surikiuotiStudentus(vargsiukai, kriterijus, Metodas(metodas));
             surikiuotiStudentus(kietiakai, kriterijus, Metodas(metodas));
 
-            auto start_write = high_resolution_clock::now();
+            
             irasytiStudentusIFaila(vargsiukai, Metodas(metodas), "vargsiukai.txt");
-            auto end_write = high_resolution_clock::now();
-            cout << "Įrašymas į failą vargšiukai užtruko: "<< duration_cast<milliseconds>(end_write-start_write).count()<<"ms"<<endl;
-            auto start_write1 = high_resolution_clock::now();
+           
             irasytiStudentusIFaila(kietiakai, Metodas(metodas), "kietiakai.txt");
-            auto end_write1 = high_resolution_clock::now();
-            cout << "Įrašymas į failą kietiakai užtruko: "<< duration_cast<milliseconds>(end_write1-start_write1).count()<<"ms"<<endl;
-            cout << "Failai „vargsiukai.txt“ ir „kietiakai.txt“ sėkmingai sukurti!" << endl;
-        }
+           
 
-        else if (pasirinkimas == 7) {
+        }else if (pasirinkimas == 7) {
             cout << "Programa baigta." << endl;
             break;
         }
@@ -183,7 +172,9 @@ int main() {
         cout << "\nNaudojamas konteineris: std::list\n";
         list<Studentas> Grupe;
         paleistiPrograma(Grupe);
+        
     }
-
+    cout << "\n==== Visų matuotų laikų suvestinė ====\n";
+    Timer::showAll();
     return 0;
 }

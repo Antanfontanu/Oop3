@@ -1,7 +1,5 @@
 #include "studentas.h"
-#include <iostream>
-#include <algorithm>
-#include <iomanip>
+#include "mylib.h"
 #include "meniu.h"
 #include "failai.h"
 
