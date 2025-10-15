@@ -27,7 +27,11 @@ void paleistiPrograma(Container &Grupe) {
         switch (pasirinkimas) {
             case 1: {
                 int m = ivestiSk("Kiek studentų grupėje: ", 1);
-                for (int z = 0; z < m; z++) Grupe.push_back(Stud_iv());
+                for (int z = 0; z < m; z++) {
+                    Grupe.push_back(Stud_iv());
+            
+                    cout << "Studento objektas saugomas adresu: " << &Grupe.back() << endl;
+                }
                 mSort(Grupe, [](const Studentas& a, const Studentas& b){ return a.pav < b.pav; });
                 break;
             }
@@ -72,11 +76,15 @@ void paleistiPrograma(Container &Grupe) {
                 }
 
                 cout << "Pasirinkite galutinio balo skaičiavimo metodą:\n";
-                cout << "1 - Vidurkis\n2 - Mediana\n3 - Abu\n";
+                cout << "1 - Vidurkis" << endl;
+                cout << "2 - Mediana" << endl;
+                cout << "3 - Abu" << endl;
                 int metodas = ivestiSk("Pasirinkimas: ", 1, 3);
 
                 cout << "Pasirinkite rikiavimo kriterijų:\n";
-                cout << "1 - Pagal vardą\n2 - Pagal pavardę\n3 - Pagal galutinį pažymį\n";
+                cout << "1 - Pagal vardą" << endl;
+                cout << "2 - Pagal pavardę" << endl;
+                cout << "3 - Pagal galutinį pažymį" << endl;
                 int kriterijus = ivestiSk("Pasirinkimas: ", 1, 3);
 
                 surikiuotiStudentus(Grupe, kriterijus, Metodas(metodas));
@@ -131,14 +139,18 @@ void paleistiPrograma(Container &Grupe) {
                 }
 
                 cout << "Pasirinkite galutinio balo skaičiavimo metodą:\n";
-                cout << "1 - Vidurkis\n2 - Mediana\n3 - Abu\n";
+                cout << "1 - Vidurkis" << endl;
+                cout << "2 - Mediana" << endl;
+                cout << "3 - Abu" << endl;
                 int metodas = ivestiSk("Pasirinkimas: ", 1, 3);
 
                 Container vargsiukai, kietiakai;
                 padalintiStudentus(Grupe, vargsiukai, kietiakai, Metodas(metodas));
 
                 cout << "Pasirinkite rikiavimo kriterijų:\n";
-                cout << "1 - Pagal vardą\n2 - Pagal pavardę\n3 - Pagal galutinį pažymį\n";
+                cout << "1 - Pagal vardą" << endl;
+                cout << "2 - Pagal pavardę" << endl;
+                cout << "3 - Pagal galutinį pažymį" << endl;
                 int kriterijus = ivestiSk("Pasirinkimas: ", 1,3);
 
                 surikiuotiStudentus(vargsiukai, kriterijus, Metodas(metodas));

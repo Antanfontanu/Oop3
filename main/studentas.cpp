@@ -26,7 +26,7 @@ Studentas Stud_iv() {
             sum+=paz;
         }
         Pirmas.balai.egz = atsitiktinisbalas(1,10);
-        cout<< "Sugeneruoti"<< balu_sk << " namų darbų ir egzamino balai studentui"
+        cout<< "Sugeneruoti"<< balu_sk << " namų darbų ir egzamino balai studentui "
         << Pirmas.var << "  "<< Pirmas.pav<< "."<< endl;
     } else {
 

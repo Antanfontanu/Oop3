@@ -6,7 +6,7 @@ class Timer {
 private:
     std::chrono::time_point<std::chrono::high_resolution_clock> start;
     std::string label;
-    inline static std::vector<std::pair<std::string, double>> results; // bendri visiems
+    inline static std::vector<std::pair<std::string, double>> results; 
 
 public:
     Timer(const std::string& name = "") 
