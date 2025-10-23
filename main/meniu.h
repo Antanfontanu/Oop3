@@ -8,5 +8,12 @@ template <typename Container>
 void padalintiStudentus(const Container& Grupe, Container& vargsiukai, Container& kietiakai, Metodas metodas);
 template <typename Container>
 void surikiuotiStudentus(Container& stud, int kriterijus, Metodas metodas);
+template <typename Container>
 
-
+void padalintiStudentusPagalStrategija(Container &Grupe, Container &vargsiukai,Container &kietiakai, Metodas metodas,int strategija);
+template <typename Container>
+void padalintiStudentus1(Container &Grupe, Container &vargsiukai, Container &kietiakai, Metodas metodas);
+template <typename Container>
+void padalintiStudentus2(Container &Grupe, Container &vargsiukai, Metodas metodas);
+template <typename Container>
+void padalintiStudentus3(Container &Grupe, Container &vargsiukai, Metodas metodas);

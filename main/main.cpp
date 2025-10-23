@@ -144,8 +144,15 @@ void paleistiPrograma(Container &Grupe) {
                 cout << "3 - Abu" << endl;
                 int metodas = ivestiSk("Pasirinkimas: ", 1, 3);
 
+                cout << "Pasirinkite padalijimo strategiją:"<<endl;
+                cout << "1 - Kopijuoti į du konteinerius"<<endl;
+                cout << "2 - Perkelti vargšiukus (ištrinti iš bendro)"<<endl;
+                cout << "3 - Optimizuota versija"<<endl;
+                int strategija = ivestiSk("Pasirinkimas: ", 1, 3);
+
                 Container vargsiukai, kietiakai;
-                padalintiStudentus(Grupe, vargsiukai, kietiakai, Metodas(metodas));
+                padalintiStudentusPagalStrategija(Grupe, vargsiukai, kietiakai, Metodas(metodas), strategija);
+                //padalintiStudentus(Grupe, vargsiukai, kietiakai, Metodas(metodas));
 
                 cout << "Pasirinkite rikiavimo kriterijų:\n";
                 cout << "1 - Pagal vardą" << endl;

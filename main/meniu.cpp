@@ -50,6 +50,98 @@ void padalintiStudentus(const Container &Grupe,
      t.save();
 }
 
+//1strategija
+
+template <typename Container>
+void padalintiStudentus1(Container &Grupe, Container &vargsiukai, Container &kietiakai, Metodas metodas) {
+    Timer t("Strategija 1");
+
+    for (auto it = Grupe.begin(); it != Grupe.end(); ++it) {
+        double galutinis = (metodas == Metodas::Vidurkis)
+                               ? it->galVid
+                               : (metodas == Metodas::Mediana)
+                                     ? it->galMed
+                                     : (it->galVid + it->galMed) / 2.0;
+        if (galutinis < 5.0)
+            vargsiukai.push_back(*it);
+        else
+            kietiakai.push_back(*it);
+    }
+
+    t.save();
+}
+
+// 2 stratedija
+template <typename Container>
+void padalintiStudentus2(Container &Grupe, Container &vargsiukai, Metodas metodas) {
+    Timer t("Strategija 2");
+
+    if constexpr (std::is_same_v<Container, std::list<Studentas>>) {
+        Grupe.remove_if([&](const Studentas &s) {
+            double galutinis = (metodas == Metodas::Vidurkis)
+                                   ? s.galVid
+                                   : (metodas == Metodas::Mediana)
+                                         ? s.galMed
+                                         : (s.galVid + s.galMed) / 2.0;
+            if (galutinis < 5.0) {
+                vargsiukai.push_back(s);
+                return true;
+            }
+            return false;
+        });
+    } else {
+        auto it = std::remove_if(Grupe.begin(), Grupe.end(), [&](const Studentas &s) {
+            double galutinis = (metodas == Metodas::Vidurkis)
+                                   ? s.galVid
+                                   : (metodas == Metodas::Mediana)
+                                         ? s.galMed
+                                         : (s.galVid + s.galMed) / 2.0;
+            if (galutinis < 5.0) {
+                vargsiukai.push_back(s);
+                return true;
+            }
+            return false;
+        });
+        Grupe.erase(it, Grupe.end());
+    }
+
+    t.save();
+}
+
+// 3strategija
+template <typename Container>
+void padalintiStudentus3(Container &Grupe, Container &vargsiukai, Metodas metodas) {
+    Timer t("Strategija 3");
+
+    auto it = stable_partition(Grupe.begin(), Grupe.end(), [&](const Studentas &s) {
+        double galutinis = (metodas == Metodas::Vidurkis)
+                               ? s.galVid
+                               : (metodas == Metodas::Mediana)
+                                     ? s.galMed
+                                     : (s.galVid + s.galMed) / 2.0;
+        return galutinis >= 5.0;
+    });
+
+    vargsiukai.insert(vargsiukai.end(), it, Grupe.end());
+    Grupe.erase(it, Grupe.end());
+
+    t.save();
+}
+
+
+template <typename Container>
+void padalintiStudentusPagalStrategija(Container &Grupe, Container &vargsiukai,Container &kietiakai, Metodas metodas,int strategija) {
+    if (strategija == 1) {
+        padalintiStudentus1(Grupe, vargsiukai, kietiakai, metodas);
+    } else if (strategija == 2) {
+        padalintiStudentus2(Grupe, vargsiukai, metodas);
+        kietiakai = Grupe;
+    } else if (strategija == 3) {
+        padalintiStudentus3(Grupe, vargsiukai, metodas);
+        kietiakai = Grupe;
+    }
+}
+
 
 template <typename Container>
 void surikiuotiStudentus(Container &stud, int kriterijus, Metodas metodas) {
@@ -110,3 +202,24 @@ template void padalintiStudentus(const std::list<Studentas> &,
                                  Metodas);
 template void surikiuotiStudentus(std::vector<Studentas> &, int, Metodas);
 template void surikiuotiStudentus(std::list<Studentas> &, int, Metodas);
+template void padalintiStudentusPagalStrategija<std::vector<Studentas>>(
+    std::vector<Studentas> &Grupe,
+    std::vector<Studentas> &vargsiukai,
+    std::vector<Studentas> &kietiakai,
+    Metodas metodas,
+    int strategija);
+
+template void padalintiStudentusPagalStrategija<std::list<Studentas>>(
+    std::list<Studentas> &Grupe,
+    std::list<Studentas> &vargsiukai,
+    std::list<Studentas> &kietiakai,
+    Metodas metodas,
+    int strategija);
+
+template void padalintiStudentus1(std::vector<Studentas>&, std::vector<Studentas>&, std::vector<Studentas>&, Metodas);
+template void padalintiStudentus1(std::list<Studentas>&, std::list<Studentas>&, std::list<Studentas>&, Metodas);
+template void padalintiStudentus2(std::vector<Studentas>&, std::vector<Studentas>&, Metodas);
+template void padalintiStudentus2(std::list<Studentas>&, std::list<Studentas>&, Metodas);
+template void padalintiStudentus3(std::vector<Studentas>&, std::vector<Studentas>&, Metodas);
+template void padalintiStudentus3(std::list<Studentas>&, std::list<Studentas>&, Metodas);
+
