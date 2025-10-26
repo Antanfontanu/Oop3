@@ -10,3 +10,19 @@ output/
 # Ignore system files
 .DS_Store
 Thumbs.db
+
+
+# IDE folders
+.vscode/
+.vscode.code-workspace
+.idea/
+*.user
+*.vcxproj
+*.sln
+
+# Build artifacts
+obj/
+bin/
+*.exe
+*.o
+*.out
