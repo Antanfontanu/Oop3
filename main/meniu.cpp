@@ -111,9 +111,10 @@ void padalintiStudentus2(Container &Grupe, Container &vargsiukai, Metodas metoda
 // 3strategija
 template <typename Container>
 void padalintiStudentus3(Container &Grupe, Container &vargsiukai, Metodas metodas) {
-    Timer t("Strategija 3");
+    Timer t("Strategija 3 (optimizuota)");
 
-    auto it = stable_partition(Grupe.begin(), Grupe.end(), [&](const Studentas &s) {
+    
+    auto it = std::partition(Grupe.begin(), Grupe.end(), [&](const Studentas &s) {
         double galutinis = (metodas == Metodas::Vidurkis)
                                ? s.galVid
                                : (metodas == Metodas::Mediana)
@@ -122,7 +123,12 @@ void padalintiStudentus3(Container &Grupe, Container &vargsiukai, Metodas metoda
         return galutinis >= 5.0;
     });
 
-    vargsiukai.insert(vargsiukai.end(), it, Grupe.end());
+    
+    vargsiukai.insert(vargsiukai.end(),
+                      std::make_move_iterator(it),
+                      std::make_move_iterator(Grupe.end()));
+
+    
     Grupe.erase(it, Grupe.end());
 
     t.save();
