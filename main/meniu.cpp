@@ -134,7 +134,6 @@ void padalintiStudentus3(Container &Grupe, Container &vargsiukai, Metodas metoda
     t.save();
 }
 
-
 template <typename Container>
 void padalintiStudentusPagalStrategija(Container &Grupe, Container &vargsiukai,Container &kietiakai, Metodas metodas,int strategija) {
     if (strategija == 1) {
