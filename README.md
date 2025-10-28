@@ -126,6 +126,23 @@ Laiko testavimas atliktas pagal startegijas <br>
 |            | 3 | 863.912 |
 
 ---
+### Rezultatų palyginimas trečios startegijos prieš ir po optimizaciją
+
+| Failas | Struktūra | Prieš optimizacijas (ms) | Po optimizacijų (ms) | Pokytis (ms) |
+|:-------------------|:-----------|-----------------------------:|--------------------------:|------------------:|
+| **studentas1000.txt** | Vector | 0.018 | 0.270 | -0.252 |
+|  | List | 0.141 | 0.304 | -0.163 |
+| **studentas10000.txt** | Vector | 0.024 | 0.985 | -0.961 |
+|  | List | 1.022 | 3.287 | -2.265 |
+| **studentas100000.txt** | Vector | 0.805 | 12.411 | -11.606 |
+|  | List | 5.194 | 49.538 | -44.344 |
+| **studentas1000000.txt** | Vector | 4.681 | 156.580 | -151.899 |
+|  | List | 49.933 | 409.203 | -359.270 |
+| **studentas10000000.txt** | Vector | 205.997 | 1448.052 | -1242.055 |
+|  | List | 863.912 | 3724.769 | -2860.857 |
+
+---
+
 ## Spartos analizė v0.3
 ### Testavimo kategorijos
 1 Failų kūrimas <br>
