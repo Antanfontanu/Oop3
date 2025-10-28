@@ -136,30 +136,30 @@ Laiko testavimas atliktas pagal startegijas <br>
 
 ---
 ## Trečios strategijos optimizavimas
-Buvo pasirinkta naudoti std::stable_parition (buvo abndyta naudoti tiesiog partition, bet laikas gavosi ilgesnis), nes: <br>
-naudoja mažiau atminties nei kitos kiti algoritmai <br>
+Buvo pasirinkta naudoti `std::partition` (buvo abndyta naudoti `std::stable_partition` bet laikas gavosi ilgesnis), nes: <br>
+naudoja mažiau atminties nei kiti algoritmai <br>
 jei pažymys atitinką kriterijų jis atsiduria pradžioje, jei ne nukeliamas į galą<br>
 
 ### Rezultatų palyginimas trečios startegijos prieš ir po optimizaciją
 
-| Failas | Struktūra | Prieš optimizavimą (ms) | Su `std::stable_partition` (ms) | Su `std::partition` (ms) | Pokytis tarp `stable_partition` ir `partition` (ms) | Pokytis tarp „prieš optimizavimą“ ir `stable_partition` (ms) |
+| Failas | Struktūra | Prieš optimizavimą (ms) | Su `std::partition` (ms) | Su `std::stable_partition` (ms) | Pokytis tarp `stable_partition` ir `partition` (ms) | Pokytis tarp „prieš optimizavimą“ ir `stable_partition` (ms) |
 |:--------------------|:-----------|-------------------------------:|-----------------------------:|--------------------------:|----------------------------------:|-----------------------------------------------:|
-| **studentas1000.txt** | Vector | 0.449 | 0.018 | 0.270 | +0.252 | −0.431 |
-|  | List | 0.617 | 0.141 | 0.304 | +0.163 | −0.476 |
+| **studentas1000.txt** | Vector | 0.449 | 0.018 | 0.270 | -0.252 | −0.431 |
+|  | List | 0.617 | 0.141 | 0.304 | -0.163 | −0.476 |
 | **studentas10000.txt** | Vector | 0.706 | 0.024 | 0.985 | +0.961 | −0.682 |
 |  | List | 5.132 | 1.022 | 3.287 | −2.265 | −4.110 |
-| **studentas100000.txt** | Vector | 47.331 | 0.805 | 12.411 | +11.606 | −46.526 |
-|  | List | 58.420 | 5.194 | 49.538 | +44.344 | −53.226 |
-| **studentas1000000.txt** | Vector | 532.943 | 4.681 | 156.580 | +151.899 | −528.262 |
-|  | List | 566.519 | 49.933 | 409.203 | +359.270 | −516.586 |
-| **studentas10000000.txt** | Vector | 3895.486 | 205.997 | 1448.052 | +1242.055 | −3689.489 |
-|  | List | 4373.569 | 863.912 | 3724.769 | +2860.857 | −3509.657 |
+| **studentas100000.txt** | Vector | 47.331 | 0.805 | 12.411 | -11.606 | −46.526 |
+|  | List | 58.420 | 5.194 | 49.538 | -44.344 | −53.226 |
+| **studentas1000000.txt** | Vector | 532.943 | 4.681 | 156.580 | -151.899 | −528.262 |
+|  | List | 566.519 | 49.933 | 409.203 | -359.270 | -516.586 |
+| **studentas10000000.txt** | Vector | 3895.486 | 205.997 | 1448.052 | -1242.055 | −3689.489 |
+|  | List | 4373.569 | 863.912 | 3724.769 | -2860.857 | −3509.657 |
 ---
 ### Spartos analizės v1.0 išvados
 * 1 bei 2 strategija veikė panašiu greičiu, bet 2 buvo greitesnė, nes naudojo tik vieną konteinerį.
 * 3 strategija prieš optimizavimą dauguma aftveju efektyviausia(išskyrus dirbant su std::vector naudojant 100000 bei 10mln failus).
 * Vector konteineris veikė greičiau už list.
-* Stable_partition veikė efektyviau nei tiesiog partition.
+* `std::partition` veikė efektyviau nei `std::stable_partition`.
 * Optimizavus 3 strategija, veikimo laikas visais atvejai sutrumpėjo. Tačiau matome, kad jis labiau tinkamas vektoriams.
   
 
