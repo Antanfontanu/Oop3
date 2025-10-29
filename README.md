@@ -5,7 +5,10 @@ Programa  leidžia vartotojui suvesti arba nuskaityti duomenis apie studentą(va
 Apskaičiuoja studentų galutinius rezultatus paga formulę:<br>
 *Galutinis balas = 0.4 x namų darbų rezultatai + 0.6 x egzamino įvertinimas.*  <br>
 Duomenų įvedimas ranka - leidžiama vartotojui pasirinkti, kiek namų darbų pažymių jis nori įvesti/sugeneruoti.
-Namų darbų rezultatai - vartotojui leidžiama pasirinkti ar namų darbų rezultatus skaičiuoti su mediana ar gauti jų vidurkį.<br/>
+Namų darbų rezultatai - vartotojui leidžiama pasirinkti ar namų darbų rezultatus skaičiuoti su mediana ar gauti jų vidurkį.
+<br/>
+Leidžiama vartotojui suskirstyti studentus pagal pažymius į "vargšiukus" ir "kietiakus" (pasirenkant vieną iš trijų strategijų).<br>
+Galima pasirinkti su kokiu konteineriu norime dirbti.
 <br/>
 
 ---
@@ -28,29 +31,44 @@ Namų darbų rezultatai - vartotojui leidžiama pasirinkti ar namų darbų rezul
 **Arba galite pasinaudoti pateiktu `run.bat` failu** <br>
 Tada Nukopijuokite projekto direktoriją į savo kompiuterį ir paleiskite `run.bat` failą
   ```
-   cd projekto_direktoriją
+   cd projekto_direktorija
    .\run.bat
   ```
 -------
-## Meniu 
-1 - įvesti studentus <br>
+## Programos naudojimos instrukcija
+1. Įsidiegiame programą
+2. Paleidus programą atsidaro meniu su pasirinkimais:
+
+### Meniu 
+1 - įvesti studentus (įvesti ranka studento vardą, pavardę, pažymius)<br>
 2 - Nuskaityti studentus iš failo <br>
-3 - Parodyti rezultatų lentelę <br>
-4 - Testavimas pagal failą <br>
-5 - Generuoti atsitiktinius studentų failus <br>
-6 - Padalinti studentus į grupes (vargšiukai/kietiakai) <br>
+3 - Parodyti rezultatų lentelę (programa parodys visus galutinius įvertinimus) <br>
+4 - Testavimas pagal failą (leidžia atlikti testavimus su sugeneruotais failais) <br>
+5 - Generuoti atsitiktinius studentų failus (reikia nurodyti, kiek įrašų sugenruoti) <br>
+6 - Padalinti studentus į grupes (vargšiukai/kietiakai) (reikia pasirinkti startegiją, kurią naudosime) <br>
 7 - Baigti programą <br>
 
+3. Įsitikinkite, kad failų formatas yra
+   ```
+   Vardas Pavardė ND1 ND2 ND3 ... Egzaminas
+   Pavardė Vardas ND1 ND2 ND3 ... Egzaminas
+   ```
+
 ## Atnaujinimai v0.2
+- [v0.1 Release](https://github.com/Antanfontanu/Oop1/releases/tag/v0.1)
+- [v0.2 Release](https://github.com/Antanfontanu/Oop1/releases/tag/v0.2)
+
 v0.1 failai buvo suskirstyti į keturis .cpp ir keturis .h failus. <br> 
 Taip pat pridėtas atsitiktinis failų generavimas. <br>
 bei studentų skirstymas grupėmis pagal jų rezultatus. <br>
 ## Atnaujinimai v0.3
+- [v0.3 Release](https://github.com/Antanfontanu/Oop1/releases/tag/v0.3) <br>
 Pridėtas pasirinkimas su kuriais vektoriais norime dirbti <br> 
 Pridėta daugiau .h failų <br>
 Pridėta objekto saugojimo vieta. <br>
 Atlikti laiko testavimai tarp vector ir list konteinerių. <br>
 ## Atnaujinimai v1.0
+- [v1.0 Release](https://github.com/Antanfontanu/Oop1/releases/tag/v1.0) <br>
 Pridėta galimybė vartotojui pasirinkti kokią strategiją naudojo.
 
 **Failų aprašymas:**
