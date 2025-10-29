@@ -4,9 +4,34 @@ v.01 - release
 Programa  leidžia vartotojui suvesti arba nuskaityti duomenis apie studentą(vardą, pavardę, namų darbų rezultatus, egzamino rezultatus).<br>
 Apskaičiuoja studentų galutinius rezultatus paga formulę:<br>
 *Galutinis balas = 0.4 x namų darbų rezultatai + 0.6 x egzamino įvertinimas.*  <br>
-Duomenų įvedimas ranka - leidžiama vartotojui pasirinkti, kiek namų darbų pažymių jis nori įvesti/sigeneruoti.
+Duomenų įvedimas ranka - leidžiama vartotojui pasirinkti, kiek namų darbų pažymių jis nori įvesti/sugeneruoti.
 Namų darbų rezultatai - vartotojui leidžiama pasirinkti ar namų darbų rezultatus skaičiuoti su mediana ar gauti jų vidurkį.<br/>
 <br/>
+
+---
+## Programos diegimo instrukcija
+1. Nukopijuokite projekto direktoriją į savo kompiuterį bei sukurkite build direktoriją <br>
+    ```
+   cd projekto_direktorija
+   mkdir build
+   cd build
+   ```
+2. Su Cmake generuojame reikalingus projekto failus <br>
+   ```
+   cmake ..
+   ```
+3. Sukompiliuojame kodą ir sukuriame `.exe` failą <br>
+   ```
+   cmake --build . --config Release
+   ```
+
+**Arba galite pasinaudoti pateiktu `run.bat` failu** <br>
+Tada Nukopijuokite projekto direktoriją į savo kompiuterį ir paleiskite `run.bat` failą
+  ```
+   cd projekto_direktoriją
+   .\run.bat
+  ```
+-------
 ## Meniu 
 1 - įvesti studentus <br>
 2 - Nuskaityti studentus iš failo <br>
