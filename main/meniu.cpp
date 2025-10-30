@@ -77,37 +77,47 @@ void padalintiStudentus2(Container &Grupe, Container &vargsiukai, Metodas metoda
     Timer t("Strategija 2");
 
     if constexpr (std::is_same_v<Container, std::list<Studentas>>) {
-        Grupe.remove_if([&](const Studentas &s) {
+        //sarasui
+        auto it = Grupe.begin();
+        while (it != Grupe.end()) {
             double galutinis = (metodas == Metodas::Vidurkis)
-                                   ? s.galVid
+                                   ? it->galVid
                                    : (metodas == Metodas::Mediana)
-                                         ? s.galMed
-                                         : (s.galVid + s.galMed) / 2.0;
+                                         ? it->galMed
+                                         : (it->galVid + it->galMed) / 2.0;
+
             if (galutinis < 5.0) {
-                vargsiukai.push_back(s);
-                return true;
+                vargsiukai.push_back(*it);
+                it = Grupe.erase(it);
+            } else {
+                ++it;
             }
-            return false;
-        });
-    } else {
-        auto it = std::remove_if(Grupe.begin(), Grupe.end(), [&](const Studentas &s) {
+        }
+    } 
+    else if constexpr (std::is_same_v<Container, std::vector<Studentas>>) {
+        //vekrotiui
+        Container naujaGrupe;
+        naujaGrupe.reserve(Grupe.size());
+
+        for (auto &stud : Grupe) {
             double galutinis = (metodas == Metodas::Vidurkis)
-                                   ? s.galVid
+                                   ? stud.galVid
                                    : (metodas == Metodas::Mediana)
-                                         ? s.galMed
-                                         : (s.galVid + s.galMed) / 2.0;
-            if (galutinis < 5.0) {
-                vargsiukai.push_back(s);
-                return true;
-            }
-            return false;
-        });
-        Grupe.erase(it, Grupe.end());
-    }
+                                         ? stud.galMed
+                                         : (stud.galVid + stud.galMed) / 2.0;
+
+            if (galutinis < 5.0)
+                vargsiukai.push_back(std::move(stud));
+            else
+                naujaGrupe.push_back(std::move(stud));
+        }
+
+        Grupe = std::move(naujaGrupe);
+    } 
+   
 
     t.save();
 }
-
 // 3strategija
 template <typename Container>
 void padalintiStudentus3(Container &Grupe, Container &vargsiukai, Metodas metodas) {
