@@ -24,9 +24,12 @@ void generuotiFailus() {
 
     string failoVardas = "studentas" + to_string(dydis) + ".txt";
     ofstream out(failoVardas);
-    if (!out) { cout << "Nepavyko sukurti failo: " << failoVardas << endl; return; }
-    
+    if (!out) { 
+        cout << "Nepavyko sukurti failo: " << failoVardas << endl; 
+        return; 
+    }
 
+    
     out << setw(15) << left << "Vardas" << setw(15) << left << "Pavarde";
     for (int j = 1; j <= nd_kiekis; j++) out << "ND" << j << " ";
     out << "Egzaminas" << endl;
@@ -40,10 +43,8 @@ void generuotiFailus() {
     out.close();
 
     t.save();     
-    
     cout << "Sukurtas failas: " << failoVardas 
          << " (" << dydis << " įrašų, ND=" << nd_kiekis << ")" << endl;
-    
 }
 
 
@@ -52,41 +53,44 @@ Container nuskaitytiIsFailo(const string& failoVardas) {
     Timer t("Failo nuskaitymas");
     Container grupe;
     ifstream failas(failoVardas);
-    if (!failas) { cout << "Nepavyko atidaryti failo: " << failoVardas << endl; return grupe; }
+    if (!failas) { 
+        cout << "Nepavyko atidaryti failo: " << failoVardas << endl; 
+        return grupe; 
+    }
 
     string eilute;
-    getline(failas, eilute);
+    getline(failas, eilute); // praleidžiame antraštę
 
-    bool pavVarOrder = false;
-    if (eilute.find("Pavarde") != string::npos && eilute.find("Vardas") != string::npos) pavVarOrder = true;
+    while (getline(failas, eilute)) {
+        if (eilute.empty()) continue;
 
-    while(getline(failas, eilute)){
-        if(eilute.empty()) continue;
         Studentas s;
-        vector<string> tokens;
+        vector<double> nd;
         string token;
         istringstream ss(eilute);
-        while(ss >> token) tokens.push_back(token);
+        string vardas, pavarde;
+        ss >> vardas >> pavarde;
 
-        if(tokens.size() < 3) continue;
+        s.setVardas(vardas);
+        s.setPavarde(pavarde);
 
-        if(pavVarOrder) { s.pav = tokens[0]; s.var = tokens[1]; }
-        else { s.var = tokens[0]; s.pav = tokens[1]; }
-
-        s.balai.nd.clear();
-        for(size_t i = 2; i < tokens.size(); ++i) {
-            try { s.balai.nd.push_back(stoi(tokens[i])); }
-            catch(...) { cout << "Įspėjimas: eilutėje su studentu „" << s.var << " " << s.pav << "“ pažymys \"" << tokens[i] << "\" buvo praleistas (ne skaičius)." << endl; }
+        double egz = 0.0;
+        while (ss >> token) {
+            try {
+                double balas = stod(token);
+                nd.push_back(balas);
+            } catch (...) {
+                cout << "Įspėjimas: praleistas neteisingas balas \"" << token << "\" studentui " << vardas << " " << pavarde << endl;
+            }
         }
 
-        if(!s.balai.nd.empty()){
-            s.balai.egz = s.balai.nd.back();
-            s.balai.nd.pop_back();
-        } else s.balai.egz = 0;
-
-        int sum = 0; for(int p : s.balai.nd) sum += p;
-        s.galVid = s.balai.nd.empty() ? s.balai.egz : double(sum)/s.balai.nd.size()*0.4 + s.balai.egz*0.6;
-        s.galMed = s.balai.nd.empty() ? s.balai.egz : skaiciuotiMediana(s.balai.nd)*0.4 + s.balai.egz*0.6;
+        if (!nd.empty()) {
+            egz = nd.back();
+            nd.pop_back();
+        }
+        s.setNd(nd);
+        s.setEgzaminas(egz);
+        s.skaiciuotiGalutinius();
 
         grupe.push_back(s);
     }
@@ -95,21 +99,31 @@ Container nuskaitytiIsFailo(const string& failoVardas) {
     t.save();
     return grupe;
 }
+
+
 template <typename Container>
 void irasytiStudentusIFaila(const Container& stud, Metodas metodas, const string& failoVardas){
     Timer t("Įrašymas į failus");
     ofstream out(failoVardas);
-    if(!out){ cout << "Nepavyko sukurti failo: " << failoVardas << endl; return; }
+    if(!out){ 
+        cout << "Nepavyko sukurti failo: " << failoVardas << endl; 
+        return; 
+    }
 
     for(const auto& s : stud){
-        double galutinis = (metodas == Metodas::Vidurkis) ? s.galVid :
-                            (metodas == Metodas::Mediana) ? s.galMed :
-                            (s.galVid + s.galMed)/2.0;
-        out << s.var << " " << s.pav << " " << fixed << setprecision(2) << galutinis << endl;
+        double galutinis;
+        if (metodas == Metodas::Vidurkis) galutinis = s.galutinisVid();
+        else if (metodas == Metodas::Mediana) galutinis = s.galutinisMed();
+        else galutinis = (s.galutinisVid() + s.galutinisMed()) / 2.0;
+
+        out << s.vardas() << " " << s.pavarde() << " " << fixed << setprecision(2) << galutinis << endl;
     }
+
     out.close();
     t.save();
 }
+
+
 template std::vector<Studentas> nuskaitytiIsFailo<std::vector<Studentas>>(const std::string&);
 template std::list<Studentas> nuskaitytiIsFailo<std::list<Studentas>>(const std::string&);
 template void irasytiStudentusIFaila<std::vector<Studentas>>(const std::vector<Studentas>&, Metodas, const std::string&);

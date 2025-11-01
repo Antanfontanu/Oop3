@@ -4,6 +4,8 @@
 #include "meniu.h"
 #include "timer.h"
 
+
+
 using namespace std;
 using namespace std::chrono;
 
@@ -29,15 +31,14 @@ void paleistiPrograma(Container &Grupe) {
                 int m = ivestiSk("Kiek studentų grupėje: ", 1);
                 for (int z = 0; z < m; z++) {
                     Grupe.push_back(Stud_iv());
-            
                     cout << "Studento objektas saugomas adresu: " << &Grupe.back() << endl;
                 }
-                mSort(Grupe, [](const Studentas& a, const Studentas& b){ return a.pav < b.pav; });
+                mSort(Grupe, [](const Studentas& a, const Studentas& b){ return a.pavarde() < b.pavarde(); });
                 break;
             }
 
             case 2: {
-                cout << "Pasirinkite, iš kurio failo nuskaityti studentus:\n";
+                cout << "Pasirinkite failą:\n";
                 cout << "1 - kursiokai.txt\n";
                 cout << "2 - studentas1000.txt\n";
                 cout << "3 - studentas10000.txt\n";
@@ -58,8 +59,7 @@ void paleistiPrograma(Container &Grupe) {
                 }
 
                 if (!filesystem::exists(failoKelias)) {
-                    cout << "Failo \"" << failoKelias << "\" nėra! "
-                         << "Pirmiausia sugeneruokite jį (naudokite meniu nr 5)." << endl;
+                    cout << "Failo \"" << failoKelias << "\" nėra! Sugeneruokite jį meniu nr.5." << endl;
                     continue;
                 }
 
@@ -71,20 +71,16 @@ void paleistiPrograma(Container &Grupe) {
 
             case 3: {
                 if (Grupe.empty()) { 
-                    cout << "Turi būti įvestas bent vienas studentas " << endl; 
+                    cout << "Turi būti įvestas bent vienas studentas." << endl; 
                     continue; 
                 }
 
                 cout << "Pasirinkite galutinio balo skaičiavimo metodą:\n";
-                cout << "1 - Vidurkis" << endl;
-                cout << "2 - Mediana" << endl;
-                cout << "3 - Abu" << endl;
+                cout << "1 - Vidurkis\n2 - Mediana\n3 - Abu\n";
                 int metodas = ivestiSk("Pasirinkimas: ", 1, 3);
 
                 cout << "Pasirinkite rikiavimo kriterijų:\n";
-                cout << "1 - Pagal vardą" << endl;
-                cout << "2 - Pagal pavardę" << endl;
-                cout << "3 - Pagal galutinį pažymį" << endl;
+                cout << "1 - Pagal vardą\n2 - Pagal pavardę\n3 - Pagal galutinį pažymį\n";
                 int kriterijus = ivestiSk("Pasirinkimas: ", 1, 3);
 
                 surikiuotiStudentus(Grupe, kriterijus, Metodas(metodas));
@@ -93,10 +89,8 @@ void paleistiPrograma(Container &Grupe) {
             }
 
             case 4: {
-                cout << "Pasirinkite failą testavimui:\n";
-                cout << "1 - studentai10000.txt\n";
-                cout << "2 - studentai100000.txt\n";
-                cout << "3 - studentai1000000.txt\n";
+                cout << "Pasirinkite testavimo failą:\n";
+                cout << "1 - studentai10000.txt\n2 - studentai100000.txt\n3 - studentai1000000.txt\n";
                 int failoPasirinkimas = ivestiSk("Pasirinkimas: ", 1, 3);
 
                 string failoKelias;
@@ -111,7 +105,7 @@ void paleistiPrograma(Container &Grupe) {
                     cout << "Failas tuščias arba jo nepavyko atidaryti." << endl; 
                     continue; 
                 }
-                mSort(testGrupe, [](const Studentas &a, const Studentas &b){ return a.pav < b.pav; });
+                mSort(testGrupe, [](const Studentas &a, const Studentas &b){ return a.pavarde() < b.pavarde(); });
 
                 ofstream fout("testavimo_rezultatai.txt");
                 if (!fout) { 
@@ -127,10 +121,9 @@ void paleistiPrograma(Container &Grupe) {
                 break;
             }
 
-            case 5: {
+            case 5:
                 generuotiFailus();
                 break;
-            }
 
             case 6: {
                 if (Grupe.empty()) { 
@@ -138,26 +131,19 @@ void paleistiPrograma(Container &Grupe) {
                     continue; 
                 }
 
-                cout << "Pasirinkite galutinio balo skaičiavimo metodą:\n";
-                cout << "1 - Vidurkis" << endl;
-                cout << "2 - Mediana" << endl;
-                cout << "3 - Abu" << endl;
+                cout << "Pasirinkite galutinio balo skaičiavimo metodą:\n1 - Vidurkis\n2 - Mediana\n3 - Abu\n";
                 int metodas = ivestiSk("Pasirinkimas: ", 1, 3);
 
-                cout << "Pasirinkite padalijimo strategiją:"<<endl;
-                cout << "1 - Kopijuoti į du konteinerius"<<endl;
-                cout << "2 - Perkelti vargšiukus (ištrinti iš bendro)"<<endl;
-                cout << "3 - Optimizuota versija"<<endl;
+                cout << "Pasirinkite padalijimo strategiją:\n";
+                cout << "1 - Kopijuoti į du konteinerius\n";
+                cout << "2 - Perkelti vargšiukus (ištrinti iš bendro)\n";
+                cout << "3 - Optimizuota versija\n";
                 int strategija = ivestiSk("Pasirinkimas: ", 1, 3);
 
                 Container vargsiukai, kietiakai;
                 padalintiStudentusPagalStrategija(Grupe, vargsiukai, kietiakai, Metodas(metodas), strategija);
-                //padalintiStudentus(Grupe, vargsiukai, kietiakai, Metodas(metodas));
 
-                cout << "Pasirinkite rikiavimo kriterijų:\n";
-                cout << "1 - Pagal vardą" << endl;
-                cout << "2 - Pagal pavardę" << endl;
-                cout << "3 - Pagal galutinį pažymį" << endl;
+                cout << "Pasirinkite rikiavimo kriterijų:\n1 - Pagal vardą\n2 - Pagal pavardę\n3 - Pagal galutinį pažymį\n";
                 int kriterijus = ivestiSk("Pasirinkimas: ", 1,3);
 
                 surikiuotiStudentus(vargsiukai, kriterijus, Metodas(metodas));
@@ -170,7 +156,7 @@ void paleistiPrograma(Container &Grupe) {
 
             case 7:
                 cout << "Programa baigta." << endl;
-                return; 
+                return;
 
             default:
                 cout << "Neteisingas pasirinkimas!" << endl;
