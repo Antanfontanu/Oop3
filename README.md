@@ -13,6 +13,11 @@ Galima pasirinkti su kokiu konteineriu norime dirbti.
 
 ---
 ## Programos diegimo instrukcija
+### Reikalavimai:
+* Turėti C++ 17 plaikantį kompiliatorių
+* Turėti bent 50MB laisvos vietos kompiliacijai
+* Turėti CMake versiją ≥ 3.10
+  
 1. Nukopijuokite projekto direktoriją į savo kompiuterį bei sukurkite build direktoriją <br>
     ```
    cd projekto_direktorija
