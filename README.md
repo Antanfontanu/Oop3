@@ -71,6 +71,9 @@ Atlikti laiko testavimai tarp vector ir list konteinerių. <br>
 - [v1.0 Release](https://github.com/Antanfontanu/Oop1/releases/tag/v1.0) <br>
 Pridėta galimybė vartotojui pasirinkti kokią strategiją naudojo.
 
+## Atnaujinimai v1.1
+Pridėtos klasės <br>
+
 **Failų aprašymas:**
 * main.cpp yra pagrindinis failas.
 * studentas.cpp faile aprašytas studento įvedimas.
@@ -106,6 +109,23 @@ auto start = high_resolution_clock::now();
 auto end = high_resolution_clock::now();
 auto duration = duration_cast<milliseconds>(end - start).count();
 ```
+## Programos spartos analizė v1.1
+Laiko testavimas atliktas lyginant struktūros ir klasės veikimą <br>
+naudotas `std::vector` , o failai studentas100000.txt ir studentas1000000.txt bei trečia strategija. 
+## Rezultatai
+### studentas100000.txt 
+| Realizacija | Konteineris | Strategija | Skaidymo laikas (ms) |
+|:-------------|:------------|:------------:|----------------------:|
+| **Struct**   | Vector      | 3 | 0.805 |
+| **Class**    | Vector      | 3 | 9.801 |
+
+### studentas1000000.txt
+| Realizacija | Konteineris | Strategija | Skaidymo laikas (ms) |
+|:-------------|:------------|:------------:|----------------------:|
+| **Struct**   | Vector      | 3 | 4.681 |
+| **Class**    | Vector      | 3 | 99.192 |
+
+---
 
 ## Programos spartos analizė v1.0
 Laiko testavimas atliktas pagal startegijas <br>
