@@ -72,6 +72,7 @@ Atlikti laiko testavimai tarp vector ir list konteinerių. <br>
 Pridėta galimybė vartotojui pasirinkti kokią strategiją naudojo.
 
 ## Atnaujinimai v1.1
+- [v1.1 Release](https://github.com/Antanfontanu/Oop2/releases/tag/v1.1)
 Pridėtos klasės <br>
 
 **Failų aprašymas:**
@@ -140,6 +141,13 @@ naudotas `std::vector` , o failai studentas100000.txt ir studentas1000000.txt be
 |                 | -O2        | 434             | 2.643                       | 33.605                    |
 |                 | -O3        | 509             | 2.734                       | 28.159                    |
 
+### Išvados:
+* `struct` veikia greičiau nei `class` beveik visais atvejais išskyrus -O3 su 1MLN failu 
+* Po optimizacijos skirtumai tarp `class` ir `struct` sumažėja 
+* Optimizavus labiau pagreitėja `class` laikai, o `struct` suletėja
+* `.exe` failo dydis mažėja naudojant -O1 ir -O2, tačiau -O3 vėl padidėja
+* failo dydis nesiskiria nau naudojamo duomenų kiekio
+---
 
 ## Programos spartos analizė v1.0
 Laiko testavimas atliktas pagal startegijas <br>
