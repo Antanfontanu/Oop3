@@ -111,7 +111,7 @@ auto duration = duration_cast<milliseconds>(end - start).count();
 ```
 ## Programos spartos analizė v1.1
 Laiko testavimas atliktas lyginant struktūros ir klasės veikimą <br>
-naudotas `std::vector` , o failai studentas100000.txt ir studentas1000000.txt bei trečia strategija. 
+naudotas `std::vector` , o failai studentas100000.txt ir studentas1000000.txt bei greičiausia trečia strategija. 
 ## Rezultatai
 ### studentas100000.txt 
 | Realizacija | Konteineris | Strategija | Skaidymo laikas (ms) |
@@ -127,30 +127,19 @@ naudotas `std::vector` , o failai studentas100000.txt ir studentas1000000.txt be
 
 ---
 ## Spartos analizė su flag'ais 
-### studentas100000.txt 
-| Realizacija | Konteineris | Strategija | Skaidymo laikas (ms) | .exe dydis (KB) |
-|:------------|:------------|:----------:|--------------------:|----------------:|
-| Struct      | Vector      | 3          | 0.805               |  703             |
-| Struct -O1  | Vector      | 3          | 2.321              |     367          |
-| Struct  -O2    | Vector      | 3          |  2.392              |  316            |
-| Struct  -O3    | Vector      | 3          | 2.501              |  383             |
-| Class       | Vector      | 3          | 9.801               |  793            |
-| Class -O1   | Vector      | 3          | 2.592               | 476             |
-| Class -O2   | Vector      | 3          | 2.643               |  434             |
-| Class -O3   | Vector      | 3          | 2.734               |  509             |
+### Skaidymo laikas pagal realizaciją, strategiją ir failo dydį
 
-### studentas1000000.txt
+| Realizacija | Strategija | .exe dydis (KB) | Skaidymo laikas (ms) – 100k failas | Skaidymo laikas (ms) – 1M failas|
+|:------------|:----------:|----------------:|----------------------------:|---------------------------:|
+| **Struct**      | 3          | 703             | 0.805                       | 4.681                     |
+|                 | -O1        | 367             | 2.321                       | 31.038                    |
+|                 | -O2        | 316             | 2.392                       | 29.472                    |
+|                 | -O3        | 383             | 2.501                       | 28.560                    |
+| **Class**       | 3          | 793             | 9.801                       | 99.192                    |
+|                 | -O1        | 476             | 2.592                       | 32.337                    |
+|                 | -O2        | 434             | 2.643                       | 33.605                    |
+|                 | -O3        | 509             | 2.734                       | 28.159                    |
 
-| Realizacija | Konteineris | Strategija | Skaidymo laikas (ms) | .exe dydis (KB) |
-|:------------|:------------|:----------:|--------------------:|----------------:|
-| Struct      | Vector      | 3          | 4.681               |  703            |
-| Struct  -O1    | Vector      | 3          | 31.038               |  367             |
-| Struct   -O2   | Vector      | 3          |   29.472             |  316           |
-| Struct    -O3  | Vector      | 3          |  28.560             |  383             |
-| Class       | Vector      | 3          | 99.192              |  793             |
-| Class -O1   | Vector      | 3          | 32.337              |  476             |
-| Class -O2   | Vector      | 3          | 33.605              |  434             |
-| Class -O3   | Vector      | 3          | 28.159              |  509             |
 
 ## Programos spartos analizė v1.0
 Laiko testavimas atliktas pagal startegijas <br>
