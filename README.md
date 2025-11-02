@@ -130,10 +130,10 @@ naudotas `std::vector` , o failai studentas100000.txt ir studentas1000000.txt be
 ### studentas100000.txt 
 | Realizacija | Konteineris | Strategija | Skaidymo laikas (ms) | .exe dydis (KB) |
 |:------------|:------------|:----------:|--------------------:|----------------:|
-| Struct      | Vector      | 3          | 0.805               |  XX             |
-| Struct -O1  | Vector      | 3          | 0.805               |  XX             |
-| Struct  -O2    | Vector      | 3          | 0.805               |  XX             |
-| Struct  -O3    | Vector      | 3          | 0.805               |  XX             |
+| Struct      | Vector      | 3          | 0.805               |  703             |
+| Struct -O1  | Vector      | 3          | 2.321              |     367          |
+| Struct  -O2    | Vector      | 3          |  2.392              |  316            |
+| Struct  -O3    | Vector      | 3          | 2.501              |  383             |
 | Class       | Vector      | 3          | 9.801               |  793            |
 | Class -O1   | Vector      | 3          | 2.592               | 476             |
 | Class -O2   | Vector      | 3          | 2.643               |  434             |
@@ -143,10 +143,10 @@ naudotas `std::vector` , o failai studentas100000.txt ir studentas1000000.txt be
 
 | Realizacija | Konteineris | Strategija | Skaidymo laikas (ms) | .exe dydis (KB) |
 |:------------|:------------|:----------:|--------------------:|----------------:|
-| Struct  -O1    | Vector      | 3          | 4.681               |  XX             |
-| Struct   -O2   | Vector      | 3          | 0.805               |  XX             |
-| Struct    -O3  | Vector      | 3          | 0.805               |  XX             |
-| Struct      | Vector      | 3          | 0.805               |  XX             |
+| Struct      | Vector      | 3          | 4.681               |  703            |
+| Struct  -O1    | Vector      | 3          | 31.038               |  367             |
+| Struct   -O2   | Vector      | 3          |   29.472             |  316           |
+| Struct    -O3  | Vector      | 3          |  28.560             |  383             |
 | Class       | Vector      | 3          | 99.192              |  793             |
 | Class -O1   | Vector      | 3          | 32.337              |  476             |
 | Class -O2   | Vector      | 3          | 33.605              |  434             |
