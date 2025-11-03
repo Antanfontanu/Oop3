@@ -1,12 +1,11 @@
 #include "failai.h"
+#include "meniu.h"
 #include "mylib.h"
 #include "timer.h"
 
 using namespace std;
 
-int atsitiktinisbalas(int min, int max) {
-    return min + rand() % (max - min + 1);
-}
+
 
 void generuotiFailus() {
     Timer t("Failo generavimas");

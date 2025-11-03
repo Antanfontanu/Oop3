@@ -3,7 +3,7 @@
 #include "mylib.h"
 
 
-int atsitiktinisbalas(int min, int max);
+
 template <typename Container>
 Container nuskaitytiIsFailo(const std::string& failoVardas);
 
