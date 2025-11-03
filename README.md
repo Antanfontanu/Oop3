@@ -13,6 +13,11 @@ Galima pasirinkti su kokiu konteineriu norime dirbti.
 
 ---
 ## Programos diegimo instrukcija
+### Reikalavimai:
+* Turėti C++ 17 plaikantį kompiliatorių
+* Turėti bent 50MB laisvos vietos kompiliacijai
+* Turėti CMake versiją ≥ 3.10
+  
 1. Nukopijuokite projekto direktoriją į savo kompiuterį bei sukurkite build direktoriją <br>
     ```
    cd projekto_direktorija
@@ -71,6 +76,10 @@ Atlikti laiko testavimai tarp vector ir list konteinerių. <br>
 - [v1.0 Release](https://github.com/Antanfontanu/Oop1/releases/tag/v1.0) <br>
 Pridėta galimybė vartotojui pasirinkti kokią strategiją naudojo.
 
+## Atnaujinimai v1.1
+- [v1.1 Release](https://github.com/Antanfontanu/Oop2/releases/tag/v1.1)
+Pridėtos klasės <br>
+
 **Failų aprašymas:**
 * main.cpp yra pagrindinis failas.
 * studentas.cpp faile aprašytas studento įvedimas.
@@ -106,6 +115,44 @@ auto start = high_resolution_clock::now();
 auto end = high_resolution_clock::now();
 auto duration = duration_cast<milliseconds>(end - start).count();
 ```
+## Programos spartos analizė v1.1
+Laiko testavimas atliktas lyginant struktūros ir klasės veikimą <br>
+naudotas `std::vector` , o failai studentas100000.txt ir studentas1000000.txt bei greičiausia trečia strategija. 
+## Rezultatai
+### studentas100000.txt 
+| Realizacija | Konteineris | Strategija | Skaidymo laikas (ms) |
+|:-------------|:------------|:------------:|----------------------:|
+| **Struct**   | Vector      | 3 | 0.805 |
+| **Class**    | Vector      | 3 | 9.801 |
+
+### studentas1000000.txt
+| Realizacija | Konteineris | Strategija | Skaidymo laikas (ms) |
+|:-------------|:------------|:------------:|----------------------:|
+| **Struct**   | Vector      | 3 | 4.681 |
+| **Class**    | Vector      | 3 | 99.192 |
+
+---
+## Spartos analizė su flag'ais 
+### Skaidymo laikas pagal realizaciją, strategiją ir failo dydį
+
+| Realizacija | Strategija | .exe dydis (KB) | Skaidymo laikas (ms) – 100k failas | Skaidymo laikas (ms) – 1M failas|
+|:------------|:----------:|----------------:|----------------------------:|---------------------------:|
+| **Struct**      | 3          | 703             | 0.805                       | 4.681                     |
+|                 | -O1        | 367             | 2.321                       | 31.038                    |
+|                 | -O2        | 316             | 2.392                       | 29.472                    |
+|                 | -O3        | 383             | 2.501                       | 28.560                    |
+| **Class**       | 3          | 793             | 9.801                       | 99.192                    |
+|                 | -O1        | 476             | 2.592                       | 32.337                    |
+|                 | -O2        | 434             | 2.643                       | 33.605                    |
+|                 | -O3        | 509             | 2.734                       | 28.159                    |
+
+### Išvados:
+* `struct` veikia greičiau nei `class` beveik visais atvejais išskyrus -O3 su 1MLN failu 
+* Po optimizacijos skirtumai tarp `class` ir `struct` sumažėja 
+* Optimizavus labiau pagreitėja `class` laikai, o `struct` suletėja
+* `.exe` failo dydis mažėja naudojant -O1 ir -O2, tačiau -O3 vėl padidėja
+* failo dydis nesiskiria nau naudojamo duomenų kiekio
+---
 
 ## Programos spartos analizė v1.0
 Laiko testavimas atliktas pagal startegijas <br>
