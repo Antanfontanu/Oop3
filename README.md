@@ -10,6 +10,9 @@ Namų darbų rezultatai - vartotojui leidžiama pasirinkti ar namų darbų rezul
 Leidžiama vartotojui suskirstyti studentus pagal pažymius į "vargšiukus" ir "kietiakus" (pasirenkant vieną iš trijų strategijų).<br>
 Galima pasirinkti su kokiu konteineriu norime dirbti.
 <br/>
+#### Pastabos:
+Programa patikrina klaidas vartotojo įvedime ir informuoja, jei įvestas neteisingas skaičius arba failas neegzistuoja.<br>
+Galutiniai balai gali būti skaičiuojami pagal vidurkį, medianą arba abu metodus.
 
 ---
 ## Programos diegimo instrukcija
@@ -122,13 +125,13 @@ naudotas `std::vector` , o failai studentas100000.txt ir studentas1000000.txt be
 ### studentas100000.txt 
 | Realizacija | Konteineris | Strategija | Skaidymo laikas (ms) |
 |:-------------|:------------|:------------:|----------------------:|
-| **Struct**   | Vector      | 3 | 0.805 |
+| **Struct**   | Vector      | 3 | **0.805** |
 | **Class**    | Vector      | 3 | 9.801 |
 
 ### studentas1000000.txt
 | Realizacija | Konteineris | Strategija | Skaidymo laikas (ms) |
 |:-------------|:------------|:------------:|----------------------:|
-| **Struct**   | Vector      | 3 | 4.681 |
+| **Struct**   | Vector      | 3 |**4.681** |
 | **Class**    | Vector      | 3 | 99.192 |
 
 ---
@@ -137,14 +140,14 @@ naudotas `std::vector` , o failai studentas100000.txt ir studentas1000000.txt be
 
 | Realizacija | Strategija | .exe dydis (KB) | Skaidymo laikas (ms) – 100k failas | Skaidymo laikas (ms) – 1M failas|
 |:------------|:----------:|----------------:|----------------------------:|---------------------------:|
-| **Struct**      | 3          | 703             | 0.805                       | 4.681                     |
-|                 | -O1        | 367             | 2.321                       | 31.038                    |
-|                 | -O2        | 316             | 2.392                       | 29.472                    |
+| **Struct**      | 3          | 703             | **0.805**                   | **4.681**                     |
+|                 | -O1        | 367             | 2.321                      | 31.038                    |
+|                 | -O2        | **316**             | 2.392                       | 29.472                    |
 |                 | -O3        | 383             | 2.501                       | 28.560                    |
 | **Class**       | 3          | 793             | 9.801                       | 99.192                    |
-|                 | -O1        | 476             | 2.592                       | 32.337                    |
-|                 | -O2        | 434             | 2.643                       | 33.605                    |
-|                 | -O3        | 509             | 2.734                       | 28.159                    |
+|                 | -O1        | 476             | **2.592**                   | 32.337                    |
+|                 | -O2        | **434**             | 2.643                       | 33.605                    |
+|                 | -O3        | 509             | 2.734                       | **28.159**                    |
 
 ### Išvados:
 * `struct` veikia greičiau nei `class` beveik visais atvejais išskyrus -O3 su 1MLN failu 
