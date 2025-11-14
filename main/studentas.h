@@ -37,6 +37,29 @@ public:
     Studentas() : egzaminas_(0.0), galutinisVid_(0.0), galutinisMed_(0.0) {}
     Studentas(std::istream& is) { readStudent(is); }
 
+    //kopijavimo konstruktprius
+      Studentas(const Studentas& other)
+        : vardas_(other.vardas_),
+          pavarde_(other.pavarde_),
+          nd_(other.nd_),
+          egzaminas_(other.egzaminas_),
+          galutinisVid_(other.galutinisVid_),
+          galutinisMed_(other.galutinisMed_) {}
+
+    // copy assignment  operatorius
+    Studentas& operator=(const Studentas& other) {
+        if (this != &other) {  // apsauga nuo savęs priskyrimo
+            vardas_        = other.vardas_;
+            pavarde_       = other.pavarde_;
+            nd_            = other.nd_;
+            egzaminas_     = other.egzaminas_;
+            galutinisVid_  = other.galutinisVid_;
+            galutinisMed_  = other.galutinisMed_;
+        }
+        return *this;
+    }
+
+
     //Destruktorius
     ~Studentas() {
         vardas_.clear();
@@ -69,7 +92,9 @@ public:
     
     double galBalas(double (*metodas)(const std::vector<double>&) = mediana) const;
 
-    
+    std::istream& readStudent(std::istream& is);
+
+    friend std::istream& operator>>(std::istream& is, Studentas& s);
     friend std::ostream& operator<<(std::ostream& os, const Studentas& s);
 };
 
