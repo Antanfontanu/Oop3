@@ -85,9 +85,9 @@ Pridėtos klasės <br>
 
 ## Atnaujinimai v1.2
 - [v1.2 Release](https://github.com/Antanfontanu/Oop2/releases/tag/v1.2)
-- [v1.2 aprašymas](#programos-aprašymas-v11)
+- [v1.2 aprašymas](#programos-aprašymas-v12)
 Pridėta rule of three <br>
-Pridėtas įvesties ir išvesties metodų perdengimas<br>\
+Pridėtas įvesties ir išvesties metodų perdengimas<br>
 
 ---
 
@@ -129,7 +129,7 @@ auto duration = duration_cast<milliseconds>(end - start).count();
 
 
 
-## ## Programos spartos analizė v0.3
+## Programos spartos analizė v0.3
 ### Testavimo kategorijos
 1 Failų kūrimas <br>
 2 Duomenų nuskaitymas iš failų <br>
@@ -338,3 +338,19 @@ naudotas `std::vector` , o failai studentas100000.txt ir studentas1000000.txt be
 ---
 
 ## Programos aprašymas v1.2
+* Pridėta rule of three: <br>
+  - `Copy konstruktorius` <br>
+  -  `Copy assignment operatorius` <br>
+  -  `Destruktorius `<br>
+* Perdengti įvesties metodai: <br>
+  - `Stud_iv()`- naudojamas duomenų įvedimui ranka <br>
+  - `nuskaitytiIsFailo(const std::string& failoVardas)` - naudojamas duomenų nuskaitymui iš failo <br>
+  - `generuotiFailus()`- naudojamas automaytiniam duomenų generavimui failuose <br>
+* Perdengti išvesties metodai: <br>
+  -`spausdintiLentele(const Container &Grupe, Metodas metodas, std::ostream &os = std::cout)`- skirtas duomenų išvedimuo į ekraną <br>
+  -`irasytiStudentusIFaila(const Container& stud, Metodas metodas, const std::string& failoVardas)`- skirtas duomenų išvedimui į failą <br>
+* Pridėti IO operatoriai: <br>
+  - Įvesties operatorius `operator>>` <br>
+  - Išvesties operatorius `operator<<` <br>
+* Operatorius, konstruktorius ir destruktorius programoje atlikus testavimą veikia korektiškai:<br>
+![testavimas](diagramos/rule.png)
