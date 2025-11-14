@@ -68,17 +68,28 @@ Taip pat pridėtas atsitiktinis failų generavimas. <br>
 bei studentų skirstymas grupėmis pagal jų rezultatus. <br>
 ## Atnaujinimai v0.3
 - [v0.3 Release](https://github.com/Antanfontanu/Oop1/releases/tag/v0.3) <br>
+- [v0.3 spartos analizė](#programos-spartos-analizė-v03) <br>
 Pridėtas pasirinkimas su kuriais vektoriais norime dirbti <br> 
 Pridėta daugiau .h failų <br>
 Pridėta objekto saugojimo vieta. <br>
 Atlikti laiko testavimai tarp vector ir list konteinerių. <br>
 ## Atnaujinimai v1.0
 - [v1.0 Release](https://github.com/Antanfontanu/Oop1/releases/tag/v1.0) <br>
+- [v1.0 spartos analizė](#programos-spartos-analizė-v10) <br>
 Pridėta galimybė vartotojui pasirinkti kokią strategiją naudojo.
 
 ## Atnaujinimai v1.1
 - [v1.1 Release](https://github.com/Antanfontanu/Oop2/releases/tag/v1.1)
+- [v1.1 spartos analizė](#programos-spartos-analizė-v11) <br>
 Pridėtos klasės <br>
+
+## Atnaujinimai v1.2
+- [v1.2 Release](https://github.com/Antanfontanu/Oop2/releases/tag/v1.2)
+- [v1.2 aprašymas](#programos-aprašymas-v11)
+Pridėta rule of three <br>
+Pridėtas įvesties ir išvesties metodų perdengimas<br>\
+
+---
 
 **Failų aprašymas:**
 * main.cpp yra pagrindinis failas.
@@ -115,43 +126,74 @@ auto start = high_resolution_clock::now();
 auto end = high_resolution_clock::now();
 auto duration = duration_cast<milliseconds>(end - start).count();
 ```
-## Programos spartos analizė v1.1
-Laiko testavimas atliktas lyginant struktūros ir klasės veikimą <br>
-naudotas `std::vector` , o failai studentas100000.txt ir studentas1000000.txt bei greičiausia trečia strategija. 
-## Rezultatai
-### studentas100000.txt 
-| Realizacija | Konteineris | Strategija | Skaidymo laikas (ms) |
-|:-------------|:------------|:------------:|----------------------:|
-| **Struct**   | Vector      | 3 | 0.805 |
-| **Class**    | Vector      | 3 | 9.801 |
 
-### studentas1000000.txt
-| Realizacija | Konteineris | Strategija | Skaidymo laikas (ms) |
-|:-------------|:------------|:------------:|----------------------:|
-| **Struct**   | Vector      | 3 | 4.681 |
-| **Class**    | Vector      | 3 | 99.192 |
+
+
+## ## Programos spartos analizė v0.3
+### Testavimo kategorijos
+1 Failų kūrimas <br>
+2 Duomenų nuskaitymas iš failų <br>
+3 Studentų rūšiavimas į dvi grupes <br>
+4 Surūšiuotų studentų išvedimas į vargšiukai.txt <br>
+5 Surūšiuotų studentų išvedimas į kietiakai.txt <br>
+### Rezultatų lentelė
+### Testavimas su vektoriaus konteineriu
+
+| Failas                 | Failo kūrimas | Duomenų nuskaitymas | Studentų rūšiavimas | Išvedimas į kietiakai |Išvedimas į vargšiukai|
+|:------------------------|:--------------|:--------------------|:--------------------|:-------------------|:-------------------|
+| studentas1000.txt       | 5.4 s         | 0.008 s             | 0 s                 | 0.004 s            | 0.01 s             |
+| studentas10000.txt      | 4.9 s         | 0.048 s             | 0.003 s             | 0.048 s            | 0.044 s            |
+| studentas100000.txt     | 7.1 s         | 0.445 s             | 0.049 s             | 0.388 s            | 0.282 s            |
+| studentas1000000.txt    | 16.7 s        | 3.21 s              | 0.304 s             | 4.51 s             | 3.12 s             |
+| studentas10000000.txt   | 111.6 s       | 34.3 s              | 3.1 s               | 56.12 s            | 64.33 s            |
+
+### Testavimas su sąrašo konteineriu
+
+| Failas                 | Failo kūrimas | Duomenų nuskaitymas | Studentų rūšiavimas | Išvedimas į kietiakai |Išvedimas į vargšiukai|
+|:------------------------|:--------------|:--------------------|:--------------------|:-------------------|:-------------------|
+| studentas1000.txt       | 5.4s          | 0.005 s             | 0.00064s            | 0.011 s            | 0.007 s            |
+| studentas10000.txt      | 4.9 s         | 0.076 s             | 0.003 s             | 0.053 s            | 0.042 s            |
+| studentas100000.txt     | 7.1 s         | 0.383 s             | 0.036 s             | 0.378 s            | 0.431 s            |
+| studentas1000000.txt    | 16.7 s        | 3.35 s              | 0.319 s             | 4.69 s             | 3.369 s            |
+| studentas10000000.txt   | 111.6 s       | 33.3 s              | 3.5 s               | 52.13 s            | 38.62 s            |
+
+
+
+
+## Rezultatų diagramos
+
+### studentas1000.txt
+![studentas1000](diagramos/studentas1000.png)
 
 ---
-## Spartos analizė su flag'ais 
-### Skaidymo laikas pagal realizaciją, strategiją ir failo dydį
 
-| Realizacija | Strategija | .exe dydis (KB) | Skaidymo laikas (ms) – 100k failas | Skaidymo laikas (ms) – 1M failas|
-|:------------|:----------:|----------------:|----------------------------:|---------------------------:|
-| **Struct**      | 3          | 703             | 0.805                       | 4.681                     |
-|                 | -O1        | 367             | 2.321                       | 31.038                    |
-|                 | -O2        | 316             | 2.392                       | 29.472                    |
-|                 | -O3        | 383             | 2.501                       | 28.560                    |
-| **Class**       | 3          | 793             | 9.801                       | 99.192                    |
-|                 | -O1        | 476             | 2.592                       | 32.337                    |
-|                 | -O2        | 434             | 2.643                       | 33.605                    |
-|                 | -O3        | 509             | 2.734                       | 28.159                    |
+### studentas10000.txt
+![studentas10000](diagramos/studentas10000.png)
 
-### Išvados:
-* `struct` veikia greičiau nei `class` beveik visais atvejais išskyrus -O3 su 1MLN failu 
-* Po optimizacijos skirtumai tarp `class` ir `struct` sumažėja 
-* Optimizavus labiau pagreitėja `class` laikai, o `struct` suletėja
-* `.exe` failo dydis mažėja naudojant -O1 ir -O2, tačiau -O3 vėl padidėja
-* failo dydis nesiskiria nau naudojamo duomenų kiekio
+---
+
+### studentas100000.txt
+![studentas100000](diagramos/studentas100000.png)
+
+---
+
+### studentas1000000.txt
+![studentas1000000](diagramos/studentas1000000.png)
+
+---
+
+### studentas10000000.txt
+![studentas10000000](diagramos/studentas10000000.png)
+
+---
+## Spartos analizės išvados:
+Buvo testuojama programa naudojant dvi skirtingas struktūras: std::vector ir std::list. Programos veikimo laikai buvo lyginami. </br>
+**Galima padaryti išvadas:**
+* Lyginant vector ir list labai didelių skirtumų nėra
+* Atsižvelgiant į 10mln failą, sąrašas yra labiau tinkamas naudoti su dideliais duomenų kiekiais, priešingai negu vector, kuris geriau veikia mažesnio duomenų kiekio failuose.
+* Iš gautų rezultatų matome, kad su skirtingais duomenų kiekiais programos vykdymo laikai kito, todėl sudėtinga padaryti vienareikšmę išvadą, kuris konteinerio tipas: vektorius ar sąrašas, yra tinkamesnis failų nuskaitymui, išvedimui ar rūšiavimui.
+* Reiktų bandyti atlikti tyrimą su daugiau bandymų, kad gautume tikslesnius rezultatus.
+
 ---
 
 ## Programos spartos analizė v1.0
@@ -252,69 +294,47 @@ jei pažymys atitinką kriterijų jis atsiduria pradžioje, jei ne nukeliamas į
 * `std::partition` veikė efektyviau nei `std::stable_partition`.
 * Optimizavus 3 strategija, veikimo laikas visais atvejai sutrumpėjo. Tačiau matome, kad jis labiau tinkamas vektoriams.
   
-
-## Spartos analizė v0.3
-### Testavimo kategorijos
-1 Failų kūrimas <br>
-2 Duomenų nuskaitymas iš failų <br>
-3 Studentų rūšiavimas į dvi grupes <br>
-4 Surūšiuotų studentų išvedimas į vargšiukai.txt <br>
-5 Surūšiuotų studentų išvedimas į kietiakai.txt <br>
-### Rezultatų lentelė
-### Testavimas su vektoriaus konteineriu
-
-| Failas                 | Failo kūrimas | Duomenų nuskaitymas | Studentų rūšiavimas | Išvedimas į kietiakai |Išvedimas į vargšiukai|
-|:------------------------|:--------------|:--------------------|:--------------------|:-------------------|:-------------------|
-| studentas1000.txt       | 5.4 s         | 0.008 s             | 0 s                 | 0.004 s            | 0.01 s             |
-| studentas10000.txt      | 4.9 s         | 0.048 s             | 0.003 s             | 0.048 s            | 0.044 s            |
-| studentas100000.txt     | 7.1 s         | 0.445 s             | 0.049 s             | 0.388 s            | 0.282 s            |
-| studentas1000000.txt    | 16.7 s        | 3.21 s              | 0.304 s             | 4.51 s             | 3.12 s             |
-| studentas10000000.txt   | 111.6 s       | 34.3 s              | 3.1 s               | 56.12 s            | 64.33 s            |
-
-### Testavimas su sąrašo konteineriu
-
-| Failas                 | Failo kūrimas | Duomenų nuskaitymas | Studentų rūšiavimas | Išvedimas į kietiakai |Išvedimas į vargšiukai|
-|:------------------------|:--------------|:--------------------|:--------------------|:-------------------|:-------------------|
-| studentas1000.txt       | 5.4s          | 0.005 s             | 0.00064s            | 0.011 s            | 0.007 s            |
-| studentas10000.txt      | 4.9 s         | 0.076 s             | 0.003 s             | 0.053 s            | 0.042 s            |
-| studentas100000.txt     | 7.1 s         | 0.383 s             | 0.036 s             | 0.378 s            | 0.431 s            |
-| studentas1000000.txt    | 16.7 s        | 3.35 s              | 0.319 s             | 4.69 s             | 3.369 s            |
-| studentas10000000.txt   | 111.6 s       | 33.3 s              | 3.5 s               | 52.13 s            | 38.62 s            |
-
-
-
-
-## Rezultatų diagramos
-
-### studentas1000.txt
-![studentas1000](diagramos/studentas1000.png)
-
 ---
 
-### studentas10000.txt
-![studentas10000](diagramos/studentas10000.png)
 
----
 
-### studentas100000.txt
-![studentas100000](diagramos/studentas100000.png)
-
----
+## Programos spartos analizė v1.1
+Laiko testavimas atliktas lyginant struktūros ir klasės veikimą <br>
+naudotas `std::vector` , o failai studentas100000.txt ir studentas1000000.txt bei greičiausia trečia strategija. 
+## Rezultatai
+### studentas100000.txt 
+| Realizacija | Konteineris | Strategija | Skaidymo laikas (ms) |
+|:-------------|:------------|:------------:|----------------------:|
+| **Struct**   | Vector      | 3 | 0.805 |
+| **Class**    | Vector      | 3 | 9.801 |
 
 ### studentas1000000.txt
-![studentas1000000](diagramos/studentas1000000.png)
+| Realizacija | Konteineris | Strategija | Skaidymo laikas (ms) |
+|:-------------|:------------|:------------:|----------------------:|
+| **Struct**   | Vector      | 3 | 4.681 |
+| **Class**    | Vector      | 3 | 99.192 |
 
 ---
+## Spartos analizė su flag'ais 
+### Skaidymo laikas pagal realizaciją, strategiją ir failo dydį
 
-### studentas10000000.txt
-![studentas10000000](diagramos/studentas10000000.png)
+| Realizacija | Strategija | .exe dydis (KB) | Skaidymo laikas (ms) – 100k failas | Skaidymo laikas (ms) – 1M failas|
+|:------------|:----------:|----------------:|----------------------------:|---------------------------:|
+| **Struct**      | 3          | 703             | 0.805                       | 4.681                     |
+|                 | -O1        | 367             | 2.321                       | 31.038                    |
+|                 | -O2        | 316             | 2.392                       | 29.472                    |
+|                 | -O3        | 383             | 2.501                       | 28.560                    |
+| **Class**       | 3          | 793             | 9.801                       | 99.192                    |
+|                 | -O1        | 476             | 2.592                       | 32.337                    |
+|                 | -O2        | 434             | 2.643                       | 33.605                    |
+|                 | -O3        | 509             | 2.734                       | 28.159                    |
 
+### Išvados:
+* `struct` veikia greičiau nei `class` beveik visais atvejais išskyrus -O3 su 1MLN failu 
+* Po optimizacijos skirtumai tarp `class` ir `struct` sumažėja 
+* Optimizavus labiau pagreitėja `class` laikai, o `struct` suletėja
+* `.exe` failo dydis mažėja naudojant -O1 ir -O2, tačiau -O3 vėl padidėja
+* failo dydis nesiskiria nau naudojamo duomenų kiekio
 ---
 
-## Spartos analizės išvados:
-Buvo testuojama programa naudojant dvi skirtingas struktūras: std::vector ir std::list. Programos veikimo laikai buvo lyginami. </br>
-**Galima padaryti išvadas:**
-* Lyginant vector ir list labai didelių skirtumų nėra
-* Atsižvelgiant į 10mln failą, sąrašas yra labiau tinkamas naudoti su dideliais duomenų kiekiais, priešingai negu vector, kuris geriau veikia mažesnio duomenų kiekio failuose.
-* Iš gautų rezultatų matome, kad su skirtingais duomenų kiekiais programos vykdymo laikai kito, todėl sudėtinga padaryti vienareikšmę išvadą, kuris konteinerio tipas: vektorius ar sąrašas, yra tinkamesnis failų nuskaitymui, išvedimui ar rūšiavimui.
-* Reiktų bandyti atlikti tyrimą su daugiau bandymų, kad gautume tikslesnius rezultatus.
+## Programos aprašymas v1.2
