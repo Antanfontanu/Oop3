@@ -37,6 +37,16 @@ public:
     Studentas() : egzaminas_(0.0), galutinisVid_(0.0), galutinisMed_(0.0) {}
     Studentas(std::istream& is) { readStudent(is); }
 
+    //Destruktorius
+    ~Studentas() {
+        vardas_.clear();
+        pavarde_.clear();
+        nd_.clear();
+        egzaminas_ = 0.0;
+        galutinisVid_ = 0.0;
+        galutinisMed_ = 0.0;
+    }
+
     // Getteriai
     inline std::string vardas() const { return vardas_; }
     inline std::string pavarde() const { return pavarde_; }
@@ -50,6 +60,8 @@ public:
     inline void setPavarde(const std::string& p) { pavarde_ = p; }
     inline void setEgzaminas(double e) { egzaminas_ = e; }
     inline void setNd(const std::vector<double>& nd) { nd_ = nd; }
+
+    
 
     std::istream& readStudent(std::istream& is);
     void skaiciuotiGalutinius();
