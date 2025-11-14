@@ -13,8 +13,71 @@ inline double galutinis(const Studentas &s, Metodas metodas) {
     return (s.galutinisVid() + s.galutinisMed()) / 2.0;
 }
 
+std::istream& Studentas::readStudent(std::istream& is) {
+    vardas_.clear();
+    pavarde_.clear();
+    nd_.clear();
+    egzaminas_ = 0.0;
 
+    
+    if (!(is >> vardas_ >> pavarde_)) {
+        return is;
+    }
 
+    std::string line;
+    std::getline(is, line);          
+    if (line.empty()) std::getline(is, line); 
+
+    std::istringstream iss(line);
+    double paz;
+    while (iss >> paz) {
+        nd_.push_back(paz);
+    }
+
+    if (!nd_.empty()) {
+        egzaminas_ = nd_.back();
+        nd_.pop_back();
+    } else {
+        egzaminas_ = 0.0;
+    }
+
+    skaiciuotiGalutinius();
+    return is;
+}
+
+void Studentas::skaiciuotiGalutinius() {
+    if (nd_.empty()) {
+        galutinisVid_ = egzaminas_;
+        galutinisMed_ = egzaminas_;
+        return;
+    }
+
+    double suma = std::accumulate(nd_.begin(), nd_.end(), 0.0);
+    double vid   = suma / nd_.size();
+    double med   = mediana(nd_);
+
+    galutinisVid_ = vid * 0.4 + egzaminas_ * 0.6;
+    galutinisMed_ = med * 0.4 + egzaminas_ * 0.6;
+}
+
+double Studentas::galBalas(double (*metodas)(const std::vector<double>&)) const {
+    if (metodas == nullptr) return galutinisVid_;
+    return metodas(nd_) * 0.4 + egzaminas_ * 0.6;
+}
+
+std::istream& operator>>(std::istream& is, Studentas& s) {
+    return s.readStudent(is);
+}
+
+std::ostream& operator<<(std::ostream& os, const Studentas& s) {
+    os << std::left
+       << std::setw(15) << s.pavarde()
+       << std::setw(15) << s.vardas()
+       << std::fixed << std::setprecision(2)
+       << std::setw(10) << s.galutinisVid()
+       << std::setw(10) << s.galutinisMed();
+    return os;
+}
 Studentas Stud_iv() {
     Studentas s;
     string vardas, pavarde;
@@ -78,29 +141,13 @@ Studentas Stud_iv() {
     s.setEgzaminas(egz);
     s.skaiciuotiGalutinius();
 
-    // Įspėjimas, jei nėra ND
+   
     if (nd.empty()) {
         cout << "Įspėjimas: studentui " << vardas << " " << pavarde
              << " nėra įvestų pažymių. Galutinis balas lygus egzamino balui." << endl;
     }
 
     return s;
-}
-void Studentas::skaiciuotiGalutinius() {
-    if (nd_.empty()) {
-        galutinisVid_ = egzaminas_;
-        galutinisMed_ = egzaminas_;
-        return;
-    }
-    double suma = std::accumulate(nd_.begin(), nd_.end(), 0.0);
-    galutinisVid_ = suma / nd_.size() * 0.4 + egzaminas_ * 0.6;
-
-    
-    galutinisMed_ = mediana(nd_) * 0.4 + egzaminas_ * 0.6;
-}
-double Studentas::galBalas(double (*metodas)(const std::vector<double>&)) const {
-    if (metodas == nullptr) return galutinisVid_;
-    return metodas(nd_) * 0.4 + egzaminas_ * 0.6;
 }
 
 

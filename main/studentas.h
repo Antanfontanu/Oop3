@@ -92,7 +92,7 @@ public:
     
     double galBalas(double (*metodas)(const std::vector<double>&) = mediana) const;
 
-    std::istream& readStudent(std::istream& is);
+    
 
     friend std::istream& operator>>(std::istream& is, Studentas& s);
     friend std::ostream& operator<<(std::ostream& os, const Studentas& s);
