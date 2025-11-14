@@ -85,7 +85,7 @@ Pridėtos klasės <br>
 
 ## Atnaujinimai v1.2
 - [v1.2 Release](https://github.com/Antanfontanu/Oop2/releases/tag/v1.2)
-- [v1.2 aprašymas](#programos-aprašymas-v12)
+- [v1.2 aprašymas](#programos-aprašymas-v12) <br>
 Pridėta rule of three <br>
 Pridėtas įvesties ir išvesties metodų perdengimas<br>
 
