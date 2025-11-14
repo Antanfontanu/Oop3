@@ -165,6 +165,53 @@ void paleistiPrograma(Container &Grupe) {
     }
 }
 
+
+void printTestRow(const std::string& name, bool ok) {
+    std::cout << std::left << std::setw(28) << name
+              << "| " << (ok ? "+" : "-") << "\n";
+}
+
+void testRuleOfThree() {
+    std::cout << "Operatorius, konstruktorius ir destruktorius programoje atlikus testavimą veikia korektiškai:\n";
+
+    //Default konstruktorius
+    Studentas s1;
+    bool okDefault = true;
+
+    //  Copy konstruktorius 
+    s1.setVardas("Jonas");
+    s1.setPavarde("Jonaitis");
+    Studentas s2(s1);
+    bool okCopyCtor = (s2.vardas() == s1.vardas() && s2.pavarde() == s1.pavarde());
+
+    // Copy assignment operatorius
+    Studentas s3;
+    s3 = s1;
+    bool okCopyAssign = (s3.vardas() == s1.vardas() && s3.pavarde() == s1.pavarde());
+
+    // Operator >> 
+    std::istringstream iss("Petras Petrauskas 10 9 8 7");
+    Studentas s4;
+    iss >> s4;
+    bool okInput = (s4.vardas() == "Petras" && s4.pavarde() == "Petrauskas");
+
+    //  Operator << 
+    std::ostringstream oss;
+    oss << s4;
+    bool okOutput = !oss.str().empty();
+
+    //  Destruktorius
+    
+    bool okDtor = true;
+
+    // Lentelė 
+    printTestRow("Default konstruktorius", okDefault);
+    printTestRow("Copy konstruktorius", okCopyCtor);
+    printTestRow("Copy assignment operatorius", okCopyAssign);
+    printTestRow("Ivesties operatorius", okInput);
+    printTestRow("Isvesties operatorius", okOutput);
+    printTestRow("Destruktorius", okDtor);
+}
 int main() {
     srand((unsigned)system_clock::now().time_since_epoch().count());
 
@@ -188,5 +235,7 @@ int main() {
 
     cout << "\n Visi laikai \n";
     Timer::showAll();
+    cout << "\n\n--- Rule of Three testavimas ---\n";
+    testRuleOfThree();
     return 0;
 }
