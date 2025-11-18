@@ -13,6 +13,7 @@ inline double galutinis(const Studentas &s, Metodas metodas) {
     return (s.galutinisVid() + s.galutinisMed()) / 2.0;
 }
 
+
 std::istream& Studentas::readStudent(std::istream& is) {
     vardas_.clear();
     pavarde_.clear();
@@ -146,6 +147,11 @@ Studentas Stud_iv() {
         cout << "Įspėjimas: studentui " << vardas << " " << pavarde
              << " nėra įvestų pažymių. Galutinis balas lygus egzamino balui." << endl;
     }
+    // demonstracija operator<<
+    cout << "Įvestas studentas (operator<<):\n";
+    cout << s << endl;   
+
+    
 
     return s;
 }

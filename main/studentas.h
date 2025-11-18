@@ -1,5 +1,9 @@
+#ifndef STUDENTAS_H
+#define STUDENTAS_H
 #pragma once
 #include "mylib.h"
+#include "zmogus.h"
+
 
 
 
@@ -24,37 +28,40 @@ inline double mediana(const std::vector<double>& v) {
  //   double galMed = 0.0;
 //};
 
-class Studentas {
+
+
+class Studentas : public Zmogus {
 private:
-    std::string vardas_;
-    std::string pavarde_;
     std::vector<double> nd_;
     double egzaminas_;
     double galutinisVid_;
     double galutinisMed_;
 public:
-    // Konstruktoriai
-    Studentas() : egzaminas_(0.0), galutinisVid_(0.0), galutinisMed_(0.0) {}
-    Studentas(std::istream& is) { readStudent(is); }
+// Konstruktoriai
+    Studentas()
+        : Zmogus(), egzaminas_(0.0), galutinisVid_(0.0), galutinisMed_(0.0) {}
 
-    //kopijavimo konstruktprius
-      Studentas(const Studentas& other)
-        : vardas_(other.vardas_),
-          pavarde_(other.pavarde_),
+    Studentas(std::istream& is) {
+        readStudent(is);
+    }
+
+    
+    //copy konstruktorius
+    Studentas(const Studentas& other)
+        : Zmogus(other),              
           nd_(other.nd_),
           egzaminas_(other.egzaminas_),
           galutinisVid_(other.galutinisVid_),
           galutinisMed_(other.galutinisMed_) {}
 
-    // copy assignment  operatorius
+    // Copy assignment operatorius
     Studentas& operator=(const Studentas& other) {
-        if (this != &other) {  // apsauga nuo savęs priskyrimo
-            vardas_        = other.vardas_;
-            pavarde_       = other.pavarde_;
-            nd_            = other.nd_;
-            egzaminas_     = other.egzaminas_;
-            galutinisVid_  = other.galutinisVid_;
-            galutinisMed_  = other.galutinisMed_;
+        if (this != &other) {
+            Zmogus::operator=(other); 
+            nd_           = other.nd_;
+            egzaminas_    = other.egzaminas_;
+            galutinisVid_ = other.galutinisVid_;
+            galutinisMed_ = other.galutinisMed_;
         }
         return *this;
     }
@@ -71,25 +78,20 @@ public:
     }
 
     // Getteriai
-    inline std::string vardas() const { return vardas_; }
-    inline std::string pavarde() const { return pavarde_; }
     inline double egzaminas() const { return egzaminas_; }
     inline std::vector<double> nd() const { return nd_; }
     inline double galutinisVid() const { return galutinisVid_; }
     inline double galutinisMed() const { return galutinisMed_; }
 
-    //Setteriai
-    inline void setVardas(const std::string& v) { vardas_ = v; }
-    inline void setPavarde(const std::string& p) { pavarde_ = p; }
+    // Setteriai
     inline void setEgzaminas(double e) { egzaminas_ = e; }
     inline void setNd(const std::vector<double>& nd) { nd_ = nd; }
 
     
 
     std::istream& readStudent(std::istream& is);
-    void skaiciuotiGalutinius();
+    void skaiciuotiGalutinius() override;
 
-    
     double galBalas(double (*metodas)(const std::vector<double>&) = mediana) const;
 
     
@@ -97,7 +99,7 @@ public:
     friend std::istream& operator>>(std::istream& is, Studentas& s);
     friend std::ostream& operator<<(std::ostream& os, const Studentas& s);
 };
-
+#endif
 enum class Metodas {
     Vidurkis = 1,
     Mediana = 2,
