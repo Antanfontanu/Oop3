@@ -350,6 +350,7 @@ naudotas `std::vector` , o failai studentas100000.txt ir studentas1000000.txt be
   -`spausdintiLentele(const Container &Grupe, Metodas metodas, std::ostream &os = std::cout)`- skirtas duomenų išvedimuo į ekraną <br>
   -`irasytiStudentusIFaila(const Container& stud, Metodas metodas, const std::string& failoVardas)`- skirtas duomenų išvedimui į failą <br>
 * Pridėti IO operatoriai: <br>
+![operatoriai](diagramos/op.png)
   - Įvesties operatorius `operator>>` <br>
   - Išvesties operatorius `operator<<` <br>
 * Operatorius, konstruktorius ir destruktorius programoje atlikus testavimą veikia korektiškai:<br>
