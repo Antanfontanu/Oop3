@@ -343,11 +343,11 @@ naudotas `std::vector` , o failai studentas100000.txt ir studentas1000000.txt be
   -  `Copy assignment operatorius` <br>
   -  `Destruktorius `<br>
 * Perdengti įvesties metodai: <br>
-  - `Stud_iv()`- naudojamas duomenų įvedimui ranka <br>
-  - `nuskaitytiIsFailo(const std::string& failoVardas)` - naudojamas duomenų nuskaitymui iš failo <br>
-  - `generuotiFailus()`- naudojamas automaytiniam duomenų generavimui failuose <br>
+  - `Stud_iv()`- naudojamas duomenų įvedimui ranka su `operator>>` <br>
+  - `nuskaitytiIsFailo(const std::string& failoVardas)` - naudojamas duomenų nuskaitymui iš failo , Copy konstruktorius `push_back`  <br>
+  - `generuotiFailus()`- naudojamas automatiniam duomenų generavimui failuose (nenaudoja studentų klasės) <br>
 * Perdengti išvesties metodai: <br>
-  -`spausdintiLentele(const Container &Grupe, Metodas metodas, std::ostream &os = std::cout)`- skirtas duomenų išvedimuo į ekraną <br>
+  -`spausdintiLentele(const Container &Grupe, Metodas metodas, std::ostream &os = std::cout)`- skirtas duomenų išvedimui į ekraną su `operator<<` vienam studentui <br>
   -`irasytiStudentusIFaila(const Container& stud, Metodas metodas, const std::string& failoVardas)`- skirtas duomenų išvedimui į failą <br>
 * Pridėti IO operatoriai: <br>
 ![operatoriai](diagramos/op.png)
