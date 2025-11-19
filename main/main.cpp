@@ -3,6 +3,7 @@
 #include "failai.h"
 #include "meniu.h"
 #include "timer.h"
+#include "zmogus.h"
 
 
 
@@ -213,7 +214,12 @@ void testRuleOfThree() {
     printTestRow("Destruktorius", okDtor);
 }
 int main() {
+    //Demonstracija zmogaus objektų kūrimo
+    //Zmogus z("Jonas", "Jonaitis");
+
+
     srand((unsigned)system_clock::now().time_since_epoch().count());
+    
 
     cout << "Pasirinkite konteinerio tipą:\n1 - std::vector\n2 - std::list\n";
     int tipas = ivestiSk("Pasirinkimas: ", 1, 2);
