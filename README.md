@@ -93,6 +93,8 @@ Pridėtas įvesties ir išvesties metodų perdengimas<br>
 ## Atnaujinimai v1.5
 - [v1.5 Release](https://github.com/Antanfontanu/Oop2/releases/tag/v1.5) <br>
 - [v1.5 aprašymas](#programos-aprašymas-v15) <br>
+Pridėta abstrakti klasė žmogus.<br>
+Klasė studentas yra išvestinė iš žmogus<br>
 ---
 
 **Failų aprašymas:**
@@ -355,10 +357,20 @@ naudotas `std::vector` , o failai studentas100000.txt ir studentas1000000.txt be
   -`irasytiStudentusIFaila(const Container& stud, Metodas metodas, const std::string& failoVardas)`- skirtas duomenų išvedimui į failą <br>
 * Pridėti IO operatoriai: <br>
 ![operatoriai](diagramos/op.png)
-
-## Programos aprašymas v1.5
   - Įvesties operatorius `operator>>` <br>
   - Išvesties operatorius `operator<<` <br>
 * Operatorius, konstruktorius ir destruktorius programoje atlikus testavimą veikia korektiškai:<br>
 ![testavimas](diagramos/rule.png)
 
+---
+
+## Programos aprašymas v1.5
+Programoje pridėta Žmogaus klasė, kurioje saugomas tik vardas ir pavardė, o Studentų klasė sukurta jos pagrindu <br>
+Ji turi Žmogaus vardą ir pavardę bei namų darbų ir egzamino pažymius <br>
+Visi ankstesni Studentų klasės metodai toliau su ja veikia taip pat, kaip ir anksčiau.<br>
+
+
+Taip pat Žmogaus klasė yra abstrakti:<br>
+![demonstracija](diagramos/dem.png) <br>
+taigi jos tipo objektų sukurti negalima<br>
+![abstrakti](diagramos/nev.png)
