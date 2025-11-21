@@ -132,6 +132,7 @@ Pridėta dokumentacija <br>
 * studentas.cpp faile aprašytas studento įvedimas.
 * failai.cpp faile surašyti metodai naudojami failų generavimui, nuskaitymui, įrašymui.
 * meniu.cpp faile aprašytos meniu naudojamos funkcijos.
+* tests.cpp faile aprašytas unit tesavimas
 * MyLib.h faile aprašytos visos pogramoje naudojamos bibliotekos.
 * studentas.h faile aprašyta Stud struktūra, kuri aprašo studentą ir metodų deklaracijos.
 * Timer.h faile aprašytas laiko skaičiavimo klasė.
