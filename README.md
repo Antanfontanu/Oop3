@@ -443,6 +443,7 @@ taigi jos tipo objektų sukurti negalima<br>
 ## Programos aprašymas v2.0
 
 
-Unit testavimas naudojant catch2 <br>
-Jo veikimas: <br>
+Unit testavimas naudojant `Catch2` testavimo framework <br>
+Testai aprašytas "tests.cpp" faile
+Matome, kad Rule of Three, metodai realizuoti Studento klasėje, veikia korektiškai <br>
 ![catch2](diagramos/test.png)
