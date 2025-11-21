@@ -441,3 +441,8 @@ taigi jos tipo objektų sukurti negalima<br>
 ---
 
 ## Programos aprašymas v2.0
+
+
+Unit testavimas naudojant catch2 <br>
+Jo veikimas: <br>
+![catch2](diagramos/test.png)
