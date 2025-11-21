@@ -130,6 +130,8 @@ Klasė studentas yra išvestinė iš žmogus<br>
 - [v2.0 Release](https://github.com/Antanfontanu/Oop2/releases/tag/v2.0) <br>
 - [v2.0 aprašymas](#programos-aprašymas-v20) <br>
 Pridėta dokumentacija <br>
+Pridėti Unit testai su Catch2 framework<br>
+Atnaujinti Cmake bei run.bat failai<br>
 
 ---
 
