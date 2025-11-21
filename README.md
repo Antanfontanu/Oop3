@@ -1,5 +1,5 @@
 # OOP
-v.01 - release
+v2.0 - release
 ## Programos aprašymas <br/>
 Programa  leidžia vartotojui suvesti arba nuskaityti duomenis apie studentą(vardą, pavardę, namų darbų rezultatus, egzamino rezultatus).<br>
 Apskaičiuoja studentų galutinius rezultatus paga formulę:<br>
@@ -12,6 +12,12 @@ Galima pasirinkti su kokiu konteineriu norime dirbti.
 <br/>
 
 ---
+
+
+<details>
+  
+  <summary><strong> Programos diegimo instrukcija </strong></summary>
+
 ## Programos diegimo instrukcija
 ### Reikalavimai:
 * Turėti C++ 17 plaikantį kompiliatorių
@@ -39,7 +45,17 @@ Tada Nukopijuokite projekto direktoriją į savo kompiuterį ir paleiskite `run.
    cd projekto_direktorija
    .\run.bat
   ```
+
+</details>
+
 -------
+
+
+
+<details>
+  
+  <summary><strong> Proogramos naudojimo instrukcija </strong></summary>
+
 ## Programos naudojimos instrukcija
 1. Įsidiegiame programą
 2. Paleidus programą atsidaro meniu su pasirinkimais:
@@ -58,6 +74,7 @@ Tada Nukopijuokite projekto direktoriją į savo kompiuterį ir paleiskite `run.
    Vardas Pavardė ND1 ND2 ND3 ... Egzaminas
    Pavardė Vardas ND1 ND2 ND3 ... Egzaminas
    ```
+</details>
 
 ## Atnaujinimai v0.2
 - [v0.1 Release](https://github.com/Antanfontanu/Oop1/releases/tag/v0.1)
