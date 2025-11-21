@@ -11,6 +11,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O2 -Wall")
 
 
+#Pagrindinis
 file(GLOB SOURCES
     "main.cpp"
     "failai.cpp"
@@ -31,3 +32,18 @@ add_custom_target(run
     WORKING_DIRECTORY ${CMAKE_PROJECT_DIR}
     COMMENT "Paleidžiama programa"
 )
+
+# Testai su Catch2
+add_executable(tests
+    tests.cpp
+    studentas.cpp
+    failai.cpp
+    meniu.cpp
+)
+
+
+target_include_directories(tests PRIVATE ${CMAKE_SOURCE_DIR}/main)
+
+
+enable_testing()
+add_test(NAME unit_tests COMMAND tests)
