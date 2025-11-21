@@ -241,7 +241,7 @@ int main() {
 
     cout << "\n Visi laikai \n";
     Timer::showAll();
-    cout << "\n\n--- Rule of Three testavimas ---\n";
+    cout << "\n\n Rule of Three testavimas \n";
     testRuleOfThree();
     return 0;
 }
