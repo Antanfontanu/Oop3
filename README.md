@@ -30,7 +30,7 @@ Galima pasirinkti su kokiu konteineriu norime dirbti.
    mkdir build
    cd build
    ```
-2. Su Cmake generuojame reikalingus projekto failus <br>
+2. Su Cmake generuojame reikalingus projekto failus, nurodykite kelią iki CmakeLists.txt failo <br>
    ```
    cmake ..
    ```
@@ -38,6 +38,12 @@ Galima pasirinkti su kokiu konteineriu norime dirbti.
    ```
    cmake --build . --config Release
    ```
+4. Paleidžiame .exe failus testavimo arba programos<br>
+  ```
+  .\Antanfontanu.exe
+  .\tests.exe
+  ```
+  
 
 **Arba galite pasinaudoti pateiktu `run.bat` failu** <br>
 Tada Nukopijuokite projekto direktoriją į savo kompiuterį ir paleiskite `run.bat` failą
