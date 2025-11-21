@@ -95,6 +95,12 @@ Pridėtas įvesties ir išvesties metodų perdengimas<br>
 - [v1.5 aprašymas](#programos-aprašymas-v15) <br>
 Pridėta abstrakti klasė žmogus.<br>
 Klasė studentas yra išvestinė iš žmogus<br>
+
+## Atnaujinimai v2.0
+- [v2.0 Release](https://github.com/Antanfontanu/Oop2/releases/tag/v2.0) <br>
+- [v2.0 aprašymas](#programos-aprašymas-v20) <br>
+Pridėta dokumentacija <br>
+
 ---
 
 **Failų aprašymas:**
@@ -135,6 +141,10 @@ auto duration = duration_cast<milliseconds>(end - start).count();
 
 
 
+<details>
+  
+  <summary><strong> Spartos analizė v0.3 </strong></summary>
+  
 ## Programos spartos analizė v0.3
 ### Testavimo kategorijos
 1 Failų kūrimas <br>
@@ -201,6 +211,13 @@ Buvo testuojama programa naudojant dvi skirtingas struktūras: std::vector ir st
 * Reiktų bandyti atlikti tyrimą su daugiau bandymų, kad gautume tikslesnius rezultatus.
 
 ---
+</details>
+
+---
+
+<details>
+  
+  <summary><strong> Spartos analizė v1.0 </strong></summary>
 
 ## Programos spartos analizė v1.0
 Laiko testavimas atliktas pagal startegijas <br>
@@ -301,8 +318,13 @@ jei pažymys atitinką kriterijų jis atsiduria pradžioje, jei ne nukeliamas į
 * Optimizavus 3 strategija, veikimo laikas visais atvejai sutrumpėjo. Tačiau matome, kad jis labiau tinkamas vektoriams.
   
 ---
+</details>
 
+---
 
+<details>
+  
+  <summary><strong> Spartos analizė v1.1 </strong></summary>
 
 ## Programos spartos analizė v1.1
 Laiko testavimas atliktas lyginant struktūros ir klasės veikimą <br>
@@ -343,26 +365,43 @@ naudotas `std::vector` , o failai studentas100000.txt ir studentas1000000.txt be
 * failo dydis nesiskiria nau naudojamo duomenų kiekio
 ---
 
+</details>
+
+---
+
+<details>
+  
+  <summary><strong> Programos aprašymas v1.2 </strong></summary>
+
 ## Programos aprašymas v1.2
-* Pridėta rule of three: <br>
   - `Copy konstruktorius` <br>
   -  `Copy assignment operatorius` <br>
   -  `Destruktorius `<br>
-* Perdengti įvesties metodai: <br>
+* Įvesties metodai: <br>
   - `Stud_iv()`- naudojamas duomenų įvedimui ranka su `operator>>` <br>
   - `nuskaitytiIsFailo(const std::string& failoVardas)` - naudojamas duomenų nuskaitymui iš failo , Copy konstruktorius `push_back`  <br>
   - `generuotiFailus()`- naudojamas automatiniam duomenų generavimui failuose (nenaudoja studentų klasės) <br>
-* Perdengti išvesties metodai: <br>
+* Išvesties metodai: <br>
   -`spausdintiLentele(const Container &Grupe, Metodas metodas, std::ostream &os = std::cout)`- skirtas duomenų išvedimui į ekraną su `operator<<` vienam studentui <br>
   -`irasytiStudentusIFaila(const Container& stud, Metodas metodas, const std::string& failoVardas)`- skirtas duomenų išvedimui į failą <br>
-* Pridėti IO operatoriai: <br>
+* Pridėti ir perdengti IO operatoriai: <br>
 ![operatoriai](diagramos/op.png)
   - Įvesties operatorius `operator>>` <br>
+    *Įvesties operatorius `operator>>` leidžia nuskaityti Studentas objektą naudojant `cin >> s;` arba nuskaitymą iš failo. <br>
   - Išvesties operatorius `operator<<` <br>
+    *Išvesties operatorius operator<< leidžia patogiai išvesti studento duomenis lentelės formatu. <br>
 * Operatorius, konstruktorius ir destruktorius programoje atlikus testavimą veikia korektiškai:<br>
 ![testavimas](diagramos/rule.png)
 
 ---
+
+</details>
+
+---
+
+<details>
+  
+  <summary><strong> Programos aprašymas v1.5 </strong></summary>
 
 ## Programos aprašymas v1.5
 Programoje pridėta Žmogaus klasė, kurioje saugomas tik vardas ir pavardė, o Studentų klasė sukurta jos pagrindu <br>
@@ -372,5 +411,16 @@ Visi ankstesni Studentų klasės metodai toliau su ja veikia taip pat, kaip ir a
 
 Taip pat Žmogaus klasė yra abstrakti:<br>
 ![demonstracija](diagramos/dem.png) <br>
+
+
+---
+
+</details>
+
+---
+
+## Programos aprašymas v2.0
+
+
 taigi jos tipo objektų sukurti negalima<br>
 ![abstrakti](diagramos/nev.png)
