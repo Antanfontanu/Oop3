@@ -58,7 +58,8 @@ Tada Nukopijuokite projekto direktoriją į savo kompiuterį ir paleiskite `run.
 
 ## Programos naudojimos instrukcija
 1. Įsidiegiame programą
-2. Paleidus programą atsidaro meniu su pasirinkimais:
+2. Paleidus programą atsidaro pasirinkimas, su kuriuo konteineriu norime dirbti
+3. Pasirinkus konteinerį,  atsidaro meniu su pasirinkimais:
 
 ### Meniu 
 1 - įvesti studentus (įvesti ranka studento vardą, pavardę, pažymius)<br>
@@ -69,11 +70,17 @@ Tada Nukopijuokite projekto direktoriją į savo kompiuterį ir paleiskite `run.
 6 - Padalinti studentus į grupes (vargšiukai/kietiakai) (reikia pasirinkti startegiją, kurią naudosime) <br>
 7 - Baigti programą <br>
 
-3. Įsitikinkite, kad failų formatas yra
+4. Įsitikinkite, kad failų formatas yra
    ```
    Vardas Pavardė ND1 ND2 ND3 ... Egzaminas
    Pavardė Vardas ND1 ND2 ND3 ... Egzaminas
    ```
+
+5. Baigus programą pateikiami:
+   
+   * Testavimo laikai<br>
+   * Rule of Three testavimas <br>
+   
 </details>
 
 ## Atnaujinimai v0.2
