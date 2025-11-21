@@ -56,7 +56,7 @@ Tada Nukopijuokite projekto direktoriją į savo kompiuterį ir paleiskite `run.
   
   <summary><strong> Proogramos naudojimo instrukcija </strong></summary>
 
-## Programos naudojimos instrukcija
+## Programos naudojimosi instrukcija
 1. Įsidiegiame programą
 2. Paleidus programą atsidaro pasirinkimas, su kuriuo konteineriu norime dirbti
 3. Pasirinkus konteinerį,  atsidaro meniu su pasirinkimais:
@@ -455,3 +455,9 @@ Unit testavimas naudojant `Catch2` testavimo framework <br>
 Testai aprašytas "tests.cpp" faile
 Matome, kad Rule of Three, metodai realizuoti Studento klasėje, veikia korektiškai <br>
 ![catch2](diagramos/test.png)
+
+### Testavimo failo paleidimas:
+
+```
+ g++ -std=c++17 main/tests.cpp main/studentas.cpp main/failai.cpp main/meniu.cpp -o tests
+```
