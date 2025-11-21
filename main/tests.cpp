@@ -54,7 +54,7 @@ TEST_CASE(" copy konstruktorius") {
 
 //  copy assignment operatorius 
 
-TEST_CASE("Studentas: copy assignment operatorius perkelia duomenis") {
+TEST_CASE("copy assignment") {
     Studentas s1;
     s1.setVardas("Vardas");
     s1.setPavarde("Pavardė");
@@ -79,7 +79,7 @@ TEST_CASE("Studentas: copy assignment operatorius perkelia duomenis") {
     REQUIRE(s2.galutinisMed() == s1.galutinisMed());
 }
 
-TEST_CASE("Studentas: destruktorius korektiskai suveikia") {
+TEST_CASE("Studentas:") {
     bool reachedEnd = false;
 
     {
@@ -90,7 +90,7 @@ TEST_CASE("Studentas: destruktorius korektiskai suveikia") {
         s.setEgzaminas(5.0);
         s.skaiciuotiGalutinius();
 
-        // Čia objektas dar gyvas
+        
         REQUIRE(s.vardas() == "Test");
         REQUIRE(s.nd().size() == 3);
 
@@ -109,8 +109,18 @@ TEST_CASE("operator>> ") {
 
     REQUIRE(s.vardas() == "Petras");
     REQUIRE(s.pavarde() == "Petrauskas");
-    REQUIRE_FALSE(s.nd().empty());
-    REQUIRE(s.egzaminas() >= 0.0); 
+    
+
+    
+
+    
+    REQUIRE(s.nd().size() == 3);
+    REQUIRE(s.nd()[0] == 10.0);
+    REQUIRE(s.nd()[1] == 9.0);
+    REQUIRE(s.nd()[2] == 8.0);
+
+    
+    REQUIRE(s.egzaminas() == 7.0);
 }
 
 // Operator <<
