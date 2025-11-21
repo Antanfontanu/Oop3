@@ -413,6 +413,10 @@ Taip pat Žmogaus klasė yra abstrakti:<br>
 ![demonstracija](diagramos/dem.png) <br>
 
 
+taigi jos tipo objektų sukurti negalima<br>
+![abstrakti](diagramos/nev.png)
+
+
 ---
 
 </details>
@@ -420,7 +424,3 @@ Taip pat Žmogaus klasė yra abstrakti:<br>
 ---
 
 ## Programos aprašymas v2.0
-
-
-taigi jos tipo objektų sukurti negalima<br>
-![abstrakti](diagramos/nev.png)
