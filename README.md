@@ -1,5 +1,5 @@
 # OOP
-v.01 - release
+v2.0 - release
 ## Programos aprašymas <br/>
 Programa  leidžia vartotojui suvesti arba nuskaityti duomenis apie studentą(vardą, pavardę, namų darbų rezultatus, egzamino rezultatus).<br>
 Apskaičiuoja studentų galutinius rezultatus paga formulę:<br>
@@ -12,6 +12,12 @@ Galima pasirinkti su kokiu konteineriu norime dirbti.
 <br/>
 
 ---
+
+
+<details>
+  
+  <summary><strong> Programos diegimo instrukcija </strong></summary>
+
 ## Programos diegimo instrukcija
 ### Reikalavimai:
 * Turėti C++ 17 plaikantį kompiliatorių
@@ -24,7 +30,7 @@ Galima pasirinkti su kokiu konteineriu norime dirbti.
    mkdir build
    cd build
    ```
-2. Su Cmake generuojame reikalingus projekto failus <br>
+2. Su Cmake generuojame reikalingus projekto failus, nurodykite kelią iki CmakeLists.txt failo <br>
    ```
    cmake ..
    ```
@@ -32,6 +38,12 @@ Galima pasirinkti su kokiu konteineriu norime dirbti.
    ```
    cmake --build . --config Release
    ```
+4. Paleidžiame .exe failus testavimo arba programos<br>
+  ```
+  .\Antanfontanu.exe
+  .\tests.exe
+  ```
+  
 
 **Arba galite pasinaudoti pateiktu `run.bat` failu** <br>
 Tada Nukopijuokite projekto direktoriją į savo kompiuterį ir paleiskite `run.bat` failą
@@ -39,10 +51,21 @@ Tada Nukopijuokite projekto direktoriją į savo kompiuterį ir paleiskite `run.
    cd projekto_direktorija
    .\run.bat
   ```
+
+</details>
+
 -------
-## Programos naudojimos instrukcija
+
+
+
+<details>
+  
+  <summary><strong> Proogramos naudojimo instrukcija </strong></summary>
+
+## Programos naudojimosi instrukcija
 1. Įsidiegiame programą
-2. Paleidus programą atsidaro meniu su pasirinkimais:
+2. Paleidus programą atsidaro pasirinkimas, su kuriuo konteineriu norime dirbti
+3. Pasirinkus konteinerį,  atsidaro meniu su pasirinkimais:
 
 ### Meniu 
 1 - įvesti studentus (įvesti ranka studento vardą, pavardę, pažymius)<br>
@@ -53,11 +76,18 @@ Tada Nukopijuokite projekto direktoriją į savo kompiuterį ir paleiskite `run.
 6 - Padalinti studentus į grupes (vargšiukai/kietiakai) (reikia pasirinkti startegiją, kurią naudosime) <br>
 7 - Baigti programą <br>
 
-3. Įsitikinkite, kad failų formatas yra
+4. Įsitikinkite, kad failų formatas yra
    ```
    Vardas Pavardė ND1 ND2 ND3 ... Egzaminas
    Pavardė Vardas ND1 ND2 ND3 ... Egzaminas
    ```
+
+5. Baigus programą pateikiami:
+   
+   * Testavimo laikai<br>
+   * Rule of Three testavimas <br>
+   
+</details>
 
 ## Atnaujinimai v0.2
 - [v0.1 Release](https://github.com/Antanfontanu/Oop1/releases/tag/v0.1)
@@ -95,6 +125,14 @@ Pridėtas įvesties ir išvesties metodų perdengimas<br>
 - [v1.5 aprašymas](#programos-aprašymas-v15) <br>
 Pridėta abstrakti klasė žmogus.<br>
 Klasė studentas yra išvestinė iš žmogus<br>
+
+## Atnaujinimai v2.0
+- [v2.0 Release](https://github.com/Antanfontanu/Oop2/releases/tag/v2.0) <br>
+- [v2.0 aprašymas](#programos-aprašymas-v20) <br>
+Pridėta dokumentacija <br>
+Pridėti Unit testai su Catch2 framework<br>
+Atnaujinti Cmake bei run.bat failai<br>
+
 ---
 
 **Failų aprašymas:**
@@ -102,6 +140,7 @@ Klasė studentas yra išvestinė iš žmogus<br>
 * studentas.cpp faile aprašytas studento įvedimas.
 * failai.cpp faile surašyti metodai naudojami failų generavimui, nuskaitymui, įrašymui.
 * meniu.cpp faile aprašytos meniu naudojamos funkcijos.
+* tests.cpp faile aprašytas unit tesavimas
 * MyLib.h faile aprašytos visos pogramoje naudojamos bibliotekos.
 * studentas.h faile aprašyta Stud struktūra, kuri aprašo studentą ir metodų deklaracijos.
 * Timer.h faile aprašytas laiko skaičiavimo klasė.
@@ -393,6 +432,10 @@ naudotas `std::vector` , o failai studentas100000.txt ir studentas1000000.txt be
 
 ---
 
+<details>
+  
+  <summary><strong> Programos aprašymas v1.5 </strong></summary>
+
 ## Programos aprašymas v1.5
 Programoje pridėta Žmogaus klasė, kurioje saugomas tik vardas ir pavardė, o Studentų klasė sukurta jos pagrindu <br>
 Ji turi Žmogaus vardą ir pavardę bei namų darbų ir egzamino pažymius <br>
@@ -401,5 +444,28 @@ Visi ankstesni Studentų klasės metodai toliau su ja veikia taip pat, kaip ir a
 
 Taip pat Žmogaus klasė yra abstrakti:<br>
 ![demonstracija](diagramos/dem.png) <br>
+
+
 taigi jos tipo objektų sukurti negalima<br>
 ![abstrakti](diagramos/nev.png)
+
+
+---
+
+</details>
+
+---
+
+## Programos aprašymas v2.0
+
+
+Unit testavimas naudojant `Catch2` testavimo framework <br>
+Testai aprašytas "tests.cpp" faile
+Matome, kad Rule of Three, metodai realizuoti Studento klasėje, veikia korektiškai <br>
+![catch2](diagramos/test.png)
+
+### Testavimo failo paleidimas:
+
+```
+ g++ -std=c++17 main/tests.cpp main/studentas.cpp main/failai.cpp main/meniu.cpp -o tests
+```
