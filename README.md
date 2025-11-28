@@ -21,9 +21,27 @@ Galima pasirinkti su kokiu konteineriu norime dirbti.
 ## Programos diegimo instrukcija
 ### Reikalavimai:
 * Turėti C++ 17 plaikantį kompiliatorių
+* Galimybė vykdyti programas su administravimo teisėmis
 * Turėti bent 50MB laisvos vietos kompiliacijai
 * Turėti CMake versiją ≥ 3.10
-  
+
+## Naudojant setup.exe
+1. Atsisiųskite `setup.exe` <br>
+2. Paspaudus ant atsisiųsto failo, spauskite `install` ir baigus diegmą paspauskite `finish` <br>
+3. Failas atsiras aplanke `C:\Program Files\VU\Vardenis-Pavardenis\` <br>
+4. Diegimo metu automatiškai sukuriamos nuorodos(per kurias greitai paleidžiama programa): <br>
+   * Darbalauky - OOP3
+   * Start meniu - VU->Vardenis-Pavardenis
+5. Paleisti Programą galite per darbalauky, per Start meniu arba paleidus vykdomą failą <br>
+6.  [programos naudojimasis ](#programos-naudojimosi-instrukcija) <br>
+7. Programos ištrinimas: <br>
+  * nueikite į `control panel` savo kompiutery
+  * paspauskite `programs`
+  * susiraskite programą `OO3`
+  * Paspauskite `uninstall` ir sekite nurodymus
+
+
+## Naudojant CMake
 1. Nukopijuokite projekto direktoriją į savo kompiuterį bei sukurkite build direktoriją <br>
     ```
    cd projekto_direktorija
@@ -133,6 +151,10 @@ Pridėta dokumentacija <br>
 Pridėti Unit testai su Catch2 framework<br>
 Atnaujinti Cmake bei run.bat failai<br>
 
+## Atnaujinimai v3.0
+- [v3.0 Release](https://github.com/Antanfontanu/Oop3/releases/tag/v3.0) <br>
+
+Pridėtas setup.exe failas ir naudojimosi instrukcija <br>
 ---
 
 **Failų aprašymas:**
@@ -456,6 +478,10 @@ taigi jos tipo objektų sukurti negalima<br>
 
 ---
 
+<details>
+  
+  <summary><strong> Programos aprašymas v2.0 </strong></summary>
+  
 ## Programos aprašymas v2.0
 
 
@@ -469,3 +495,6 @@ Matome, kad Rule of Three, metodai realizuoti Studento klasėje, veikia korekti�
 ```
  g++ -std=c++17 main/tests.cpp main/studentas.cpp main/failai.cpp main/meniu.cpp -o tests
 ```
+
+
+</details>
