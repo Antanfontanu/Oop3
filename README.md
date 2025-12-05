@@ -33,7 +33,7 @@ Galima pasirinkti su kokiu konteineriu norime dirbti.
    * Darbalauky - OOP3
    * Start meniu - VU->Vardenis-Pavardenis
 5. Paleisti Programą galite per darbalauky, per Start meniu arba paleidus vykdomą failą <br>
-6.  [programos naudojimasis ](#programos-naudojimosi-instrukcija) <br>
+6.  [Programos naudojimas ](#programos-naudojimosi-instrukcija) <br>
 7. Programos ištrinimas: <br>
   * nueikite į `control panel` savo kompiutery
   * paspauskite `programs`
